@@ -23,10 +23,9 @@ def tex2jats(texname):
                "thanks",
                "affil\[([0-50]{1})\]",
                "credit",
-               "doi",
+               "dois",
                "editorname",
                "copyedname",
-               "typesetname",
                "prodname"]
     
     meta = []
@@ -169,7 +168,7 @@ def tex2jats(texname):
                 out = out+c
         return out
     
-    table_list = re.findall(r'(?s).begin{table}(.*?)end{table}', tex)
+    table_list = re.findall(r'(?s).begin{table\*?}(.*?)end{table\*?}', tex)
     pat = [r'\\label', r'\\caption']
     for i in range(len(table_list)):
         table = table_list[i]
@@ -181,7 +180,7 @@ def tex2jats(texname):
         label = codepoints(tab_meta[0][0])
         caption = tab_meta[1][0]
         # match main tex
-        textab = re.findall(r'(?s).begin{tabular}(.*?)end{tabular}', table)
+        textab = re.findall(r'(?s).begin{(?:tabular|seistable)}(.*?)end{(?:tabular|seistable)}', table)
         main = textab[0]
         # write to file
         tabname = texname+'_tab'+str(i+1)+'.xml'
@@ -193,15 +192,22 @@ def tex2jats(texname):
 <table frame="box" rules="all" cellpadding="5">
 <tbody>
 <!--INCLUDE HTML TABLE HERE TRANSLATED FROM {} FILE TO HTML -->
-<!-- !!! without the potentials "table" tags -->
+<!-- !!! without the potentials "table" tags (<table> and <\table>) -->
 </tbody>
 </table>
 </table-wrap>
     '''.format(label, caption, 'tab'+str(i+1)+'.tex'))
     
         tabname = texname+'_tab'+str(i+1)+'.tex'
+                # correct for textbf, not perfect....
+        regex = r"\\textbf\{(([^{}]*(\{(([^{}]*(\{[^{}]*\}[^{}]*)?)*)\}[^{}]*)?)*)\}"
+        subst = "\\1"
+        result = re.sub(regex, subst, main, 0, re.MULTILINE)
+        regex = r"[ ]{1,}|[\t]{1,}|[ \t]{1,}"
+        subst = " "
+        result = re.sub(regex, subst, result, 0, re.MULTILINE)
         with open(tabname, 'w') as fi:
-            fi.write('{}'.format(main))
+            fi.write('{}'.format(result))
 
 if __name__ == '__main__':
     

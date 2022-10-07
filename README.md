@@ -18,6 +18,7 @@ Before running the TeX2JATS converter, you need to have produced:
 - final .tex galleys (proof accepted by authors)
 - corrected list of references
 - have the final metadata on hand (you can replace it in the JATS galley)
+- check that the dates format is correct (Month dd, YYYY)
 
 
 ## Workflow
@@ -33,15 +34,26 @@ with:
 - `proof`, the name of the TeX galley without the extension (which should be .tex)
 - `biblio`, the name of the corrected list of references, without the extension (which should be .bib)
 
-3) If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml.
+3) This will output:
+- `proof.xml`  
+- `proof_metadata.jats`  
+- `proof_credits.jats`
+- `proof_galley.xml`
+- `proof_tab1.tex` if you have one table (see point (5))
+- `proof_tab1.xml`
+You will then work with the XML galley only (`proof_galley.xml`). Other files are only here for correction if needed.
+
+4) How to view the XML galley? To my knowledge, there is no open-source and easy-to-use tool, so the best way is to open it with a text editor. You will be able to view the galley before publishing on OJS. If you open it with a web browser, it will show something ugly (JATS XML differs from web XML).
+
+5) If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.
 For each table:
-- replace the wrong table code in the galley XML by tabxx.xml
-- translate the tabxx.tex to HTML with https://tableconvert.com/latex-to-html
-- copy the HTML code in the XML galley
+    1) translate the tabxx.tex to HTML with https://tableconvert.com/latex-to-html
+    2) copy the HTML code  in the XML table file `tabxx.xml`, where indicated
+    3)  replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
 
-4) Proofread XML galley and add metadata if necessary
+6) Proofread XML galley and add metadata if necessary
 
-5) Upload the galley PDF and XML files to the OJS website. 
+7) Upload the galley PDF and XML files to the OJS website. 
 - For the XML galley, images need to be uploaded separately (no need to fill in the caption etc.)
 - Don't forget the uploading order:
     1) PDF galley
