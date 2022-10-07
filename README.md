@@ -2,7 +2,7 @@
 
 
 ## Dependencies
-These ones are shared dependencies with the docx/odt parsing for Seismica module:
+These ones are shared dependencies with the [docx/odt parsing for Seismica module](https://github.com/WeAreSeismica/seismica-sce):
 - python 3.n (preferably 3.8+)
 - numpy
 - pandoc
@@ -22,10 +22,10 @@ Before running the TeX2JATS converter, you need to have produced:
 
 ## Workflow
 1) Copy tex2xml.sh, apa.csl, cleanidjats.py and metatex2jats.py to your current working directory (CWD, where the TeX galley is):
-`cd /cwd/
-cp /path/to/tex2jats/tex2xml.sh ./
-cp /path/to/tex2jats/\*.py ./
-cp  /path/to/tex2jats/apa.csl ./`
+`cd /cwd/`
+`cp /path/to/tex2jats/tex2xml.sh ./`
+`cp /path/to/tex2jats/\*.py ./`
+`cp  /path/to/tex2jats/apa.csl ./`
 
 2) In your CWD, use tex2xml.sh to convert the TeX to JATS XML:
 `./tex2xml.sh proof biblio`
