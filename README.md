@@ -29,8 +29,8 @@ Before running the TeX2JATS converter, you need to have produced:
 `cp  /path/to/tex2jats/apa.csl ./`  
 
 2) In your CWD, use tex2xml.sh to convert the TeX to JATS XML:
-`./tex2xml.sh proof biblio`
-with:
+`./tex2xml.sh proof biblio`  
+with:  
 - `proof`, the name of the TeX galley without the extension (which should be .tex)
 - `biblio`, the name of the corrected list of references, without the extension (which should be .bib)
 
@@ -39,14 +39,14 @@ with:
 - `proof_metadata.jats`  
 - `proof_credits.jats`
 - `proof_galley.xml`
-- `proof_tab1.tex` if you have one table (see point (5))
-- `proof_tab1.xml`
+- `proof_tab1.tex` if you have one table (see point (5)), and one similar file per table
+- `proof_tab1.xml`  
 You will then work with the XML galley only (`proof_galley.xml`). Other files are only here for correction if needed.
 
 4) How to view the XML galley? To my knowledge, there is no open-source and easy-to-use tool, so the best way is to open it with a text editor. You will be able to view the galley before publishing on OJS. If you open it with a web browser, it will show something ugly (JATS XML differs from web XML).
 
-5) If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.
-For each table:
+5) If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.  
+For each table:  
     1) translate the tabxx.tex to HTML with https://tableconvert.com/latex-to-html
     2) copy the HTML code  in the XML table file `tabxx.xml`, where indicated
     3)  replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
