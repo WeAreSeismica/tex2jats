@@ -4,12 +4,14 @@
 # $2: .bib file name, without extension
  
 # clean some stuff in the tex file before pandoc
-sed -i 's/figure\*/figure/g' $1.tex
+sed -i 's/figure\*/figure/g' $1.tex > $1_copy.tex
 # sed -i 's/seistable\*/tabular/g' $1.tex
-sed -i 's/\makeseistitle{\*/\makeseistitle\n{%/g' $1.tex
+sed -i 's/\makeseistitle{\*/\makeseistitle\n{%/g' $1.tex  > $1_copy.tex
 
 # convert tex file to jats xml file
-pandoc $1.tex -f latex -t jats+element_citations --citeproc --bibliography=$2.bib --mathjax --metadata link-citations=true --natbib --csl apa.csl -s -o $1.xml
+pandoc $1_copy.tex -f latex -t jats+element_citations --citeproc --bibliography=$2.bib --mathjax --metadata link-citations=true --natbib --csl apa.csl -s -o $1.xml
+
+rm -rf $1_copy.tex
 
 # extract tex metadata to jats metadata
 python3 metatex2jats.py $1
