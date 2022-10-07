@@ -47,11 +47,16 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 
 5) If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.  
 For each table:  
-    1) translate the tabxx.tex to HTML with https://tableconvert.com/latex-to-html
-    2) copy the HTML code  in the XML table file `tabxx.xml`, where indicated
-    3)  replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
+    1)  Correct any unwanted symbol in `tabxx.tex`
+    2)  Translate the `tabxx.tex` to HTML with https://tableconvert.com/latex-to-html
+    3)  Copy the HTML code  in the XML table file `tabxx.xml`, where indicated
+    4)  Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
 
-6) Proofread XML galley and add metadata if necessary
+6) Proofread XML galley and add metadata if necessary. Some things to check by visual inspection of the XML galley:
+- Metadata, author names, credits, affiliations are here
+- Abstracts are here
+- Reference list is here
+- Every figure is here 
 
 7) Upload the galley PDF and XML files to the OJS website. 
 - For the XML galley, images need to be uploaded separately (no need to fill in the caption etc.)
