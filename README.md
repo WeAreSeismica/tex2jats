@@ -66,3 +66,5 @@ For each table:
     3) Supplementary Materials (any)
     4) Review reports
 
+## TO DO
+- Don't use regex, because it is unstable with XML? Oops...
