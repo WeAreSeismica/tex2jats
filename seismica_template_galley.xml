@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.2 20190208//EN"
+                  "JATS-archivearticle1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.2" article-type="other">
+<front>
+<journal-meta>
+<journal-id></journal-id>
+<journal-title-group>
+<journal-title>Seismica</journal-title>
+</journal-title-group>
+<issn></issn>
+<publisher>
+<publisher-name></publisher-name>
+</publisher>
+</journal-meta>
+<article-meta>
+<title-group>
+<article-title>A template for Seismica</article-title>
+</title-group><pub-date publication-format="print" date-type="pub" iso-8601-date="2021-03-05">
+<day>05</day><month>03</month><year>2021</year>
+</pub-date>
+<article-id pub-id-type="publisher-id"></article-id>
+<article-id pub-id-type="doi">10.1038/s41561-020-00679-9</article-id>
+<article-id pub-id-type="pmid"></article-id>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-1825-0097</contrib-id>
+<name name-style="western">
+<surname>Author1</surname>
+<given-names>A.</given-names>
+</name>
+<aff>affil Author 1 and 2 </aff>
+<email>bla@som.ac.edu</email>
+</contrib>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-1825-0097</contrib-id>
+<name name-style="western">
+<surname>author2</surname>
+<given-names>B.</given-names>
+</name>
+<aff>affil Author 1 and 2 </aff>
+</contrib>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">0000-0002-1825-0097</contrib-id>
+<name name-style="western">
+<surname>Author3</surname>
+<given-names>C.</given-names>
+</name>
+<aff>affil author 3</aff>
+</contrib>
+<contrib contrib-type="editor">
+<name name-style="western">
+<surname>Editorname</surname>
+<given-names>E.</given-names>
+</name>
+<role>Editor</role>
+</contrib>
+<contrib contrib-type="editor">
+<name name-style="western">
+<surname>Copyed</surname>
+<given-names>C.</given-names>
+</name>
+<role>Copy-Editing, Typesetting</role>
+</contrib>
+</contrib-group>
+</article-meta>
+</front>
+<body>
+<boxed-text>
+  <p>Abstract Abstract text goes here. <bold>No more than 200
+  words</bold>. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed
+  nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+  Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris
+  massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti
+  sociosqu ad litora torquent per conubia nostra, per inceptos
+  himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia
+  nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque
+  sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut
+  ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel,
+  suscipit quis, luctu.</p>
+</boxed-text>
+<boxed-text>
+    <p>Résumé Abstract text goes here. <bold>No more than 200
+    words</bold>. Lorem ipsum dolor sit amet, consectetur adipiscing
+    elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus
+    diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis
+    sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper
+    porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class
+    aptent taciti sociosqu ad litora torquent per conubia nostra, per
+    inceptos himenaeos. Curabitur sodales ligula in libero. Sed
+    dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean
+    quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis
+    tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi
+    lectus risus, iaculis vel, suscipit quis, luctu.</p>
+  </boxed-text>
+<sec id="introduction">
+  <title>Introduction</title>
+  <p>A large portion of Turkey is located on the Anatolian Plate (AP),
+  which is slowly extruding westward as a result of the north-south
+  collision between the Arabian and Eurasian tectonic plates
+  (<xref alt="McClusky et al., 2000" rid="ref-mcclusky_global_2000" ref-type="bibr">McClusky
+  et al., 2000</xref>;
+  <xref alt="McKenzie, 1972" rid="ref-mckenzie_active_1972" ref-type="bibr">McKenzie,
+  1972</xref>;
+  <xref alt="Mckenzie, 1970" rid="ref-mckenzie_plate_1970" ref-type="bibr">Mckenzie,
+  1970</xref>). The westward motion of the AP is predominantly
+  accommodated along the North and East Anatolian faults (NAF and EAF,
+  Fig. <xref ref-type="fig" alt="1" rid="figU003A1">1</xref>). The NAF experienced a
+  sequence of destructive earthquakes that struck within the last eighty
+  years
+  (<xref alt="Armijo et al., 1999" rid="ref-armijo_westward_1999" ref-type="bibr">Armijo
+  et al., 1999</xref>;
+  <xref alt="A. Barka, 1996" rid="ref-barka_slip_1996" ref-type="bibr">A.
+  Barka, 1996</xref>;
+  <xref alt="Şengör et al., 2005" rid="ref-sengor_north_2005" ref-type="bibr">Şengör
+  et al., 2005</xref>;
+  <xref alt="Stein et al., 1997" rid="ref-stein_progressive_1997" ref-type="bibr">Stein
+  et al., 1997</xref>). In contrast, the EAF is generally assumed to be
+  less active, and has only experienced small to moderate events over
+  the last century, although large (M <inline-formula><alternatives>
+  <tex-math><![CDATA[> 7]]></tex-math>
+  <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mrow><mml:mo>&gt;</mml:mo><mml:mn>7</mml:mn></mml:mrow></mml:math></alternatives></inline-formula>)
+  earthquakes have occured in the historical record
+  (<xref alt="Ambraseys, 1970" rid="ref-ambraseys_characteristic_1970" ref-type="bibr">Ambraseys,
+  1970</xref>;
+  <xref alt="Ambraseys &amp; Jackson, 1998" rid="ref-ambraseys_faulting_1998" ref-type="bibr">Ambraseys
+  &amp; Jackson, 1998</xref>;
+  <xref alt="Hubert-Ferrari et al., 2020" rid="ref-hubert-ferrari_3800_2020" ref-type="bibr">Hubert-Ferrari
+  et al., 2020</xref>).</p>
+  <p>The EAF is a left-lateral 600-km-long strike-slip fault linking the
+  Dead Sea fault (DSF, Fig. <xref ref-type="fig" alt="1" rid="figU003A1">1</xref>) to
+  the Karlıova Triple Junction (KTJ,
+  Fig. <xref ref-type="fig" alt="1" rid="figU003A1">1</xref>) where it intersects with
+  the right-lateral NAF
+  (<xref alt="Duman &amp; Emre, 2013" rid="ref-duman_east_2013" ref-type="bibr">Duman
+  &amp; Emre, 2013</xref>;
+  <xref alt="Yilmaz et al., 2006" rid="ref-yilmaz_kinematics_2006" ref-type="bibr">Yilmaz
+  et al., 2006</xref>). The EAF has a complex geometry divided into
+  several main segments, each of them characterized by bends, pull-apart
+  basins or compressional structures
+  (<xref alt="Duman &amp; Emre, 2013" rid="ref-duman_east_2013" ref-type="bibr">Duman
+  &amp; Emre, 2013</xref>), and also comprises multiple secondary
+  sub-parallel and seismically active structures delineating a
+  50-km-wide fault zone
+  (<xref alt="Bulut et al., 2012" rid="ref-bulut_east_2012" ref-type="bibr">Bulut
+  et al., 2012</xref>). The EAF accomodates a displacement of 9 to 15
+  mm/yr
+  (<xref alt="Aktug et al., 2016" rid="ref-aktug_slip_2016" ref-type="bibr">Aktug
+  et al., 2016</xref>;
+  <xref alt="Bletery et al., 2020" rid="ref-bletery_distribution_2020-1" ref-type="bibr">Bletery
+  et al., 2020</xref>;
+  <xref alt="Cavalié &amp; Jónsson, 2014" rid="ref-cavalie_block-like_2014" ref-type="bibr">Cavalié
+  &amp; Jónsson, 2014</xref>;
+  <xref alt="Cetin et al., 2003" rid="ref-cetin_paleoseismology_2003" ref-type="bibr">Cetin
+  et al., 2003</xref>;
+  <xref alt="Reilinger et al., 2006" rid="ref-reilinger_gps_2006" ref-type="bibr">Reilinger
+  et al., 2006</xref>), with creep dominantly at depths greater than 5
+  km
+  (<xref alt="Bletery et al., 2020" rid="ref-bletery_distribution_2020-1" ref-type="bibr">Bletery
+  et al., 2020</xref>;
+  <xref alt="Cavalié &amp; Jónsson, 2014" rid="ref-cavalie_block-like_2014" ref-type="bibr">Cavalié
+  &amp; Jónsson, 2014</xref>). As a comparison, the NAF shows creep
+  rates around 20-25 mm/yr below a locking depth of 7-25 km
+  (<xref alt="Cakir et al., 2014" rid="ref-cakir_insar_2014-1" ref-type="bibr">Cakir
+  et al., 2014</xref>;
+  <xref alt="Hussain et al., 2018" rid="ref-hussain_constant_2018" ref-type="bibr">Hussain
+  et al., 2018</xref>;
+  <xref alt="Kaneko et al., 2013" rid="ref-kaneko_interseismic_2013" ref-type="bibr">Kaneko
+  et al., 2013</xref>;
+  <xref alt="Walters et al., 2011" rid="ref-walters_interseismic_2011" ref-type="bibr">Walters
+  et al., 2011</xref>;
+  <xref alt="Wright et al., 2001" rid="ref-wright_measurement_2001" ref-type="bibr">Wright
+  et al., 2001</xref>). Shallower portions of the EAF are characterized
+  by an highly varying inter-seismic slip deficit, some portions being
+  fully coupled while others appear to be at least partially creeping
+  (<xref alt="Bletery et al., 2020" rid="ref-bletery_distribution_2020-1" ref-type="bibr">Bletery
+  et al., 2020</xref>).</p>
+  <p>The January 24 2020 6.8 earthquake ruptured the EAF between the
+  Hazar Pull-apart Basin and the city of Pütürge
+  (Fig. <xref ref-type="fig" alt="1" rid="figU003A1">1</xref>). In the area, the main
+  fault has been mapped, from the interpretation of aerial photos and
+  field studies, as a sinuous trend interrupted by bends and step-overs
+  whose widths do not exceed a kilometer
+  (<xref alt="Duman &amp; Emre, 2013" rid="ref-duman_east_2013" ref-type="bibr">Duman
+  &amp; Emre, 2013</xref>). Coseismic surface rupture does not show a
+  significant horizontal component and is probably mostly gravitational
+  (<xref alt="Tatar et al., 2020" rid="ref-tatar_surface_2020" ref-type="bibr">Tatar
+  et al., 2020</xref>). Fault segmentation and bends are thought to act
+  as geometric barriers that can influence, or even drive, rupture
+  initiation, termination and propagation
+  (<xref alt="Aochi et al., 2002" rid="ref-aochi_effect_2002" ref-type="bibr">Aochi
+  et al., 2002</xref>;
+  <xref alt="A. A. Barka &amp; Kadinsky-Cade, 1988" rid="ref-barka_strike-slip_1988" ref-type="bibr">A.
+  A. Barka &amp; Kadinsky-Cade, 1988</xref>;
+  <xref alt="Duan &amp; Oglesby, 2005" rid="ref-duan_multicycle_2005" ref-type="bibr">Duan
+  &amp; Oglesby, 2005</xref>;
+  <xref alt="G. King &amp; Nabelek, 1985" rid="ref-king_role_1985" ref-type="bibr">G.
+  King &amp; Nabelek, 1985</xref>;
+  <xref alt="Wesnousky, 2006" rid="ref-wesnousky_predicting_2006" ref-type="bibr">Wesnousky,
+  2006</xref>). Similarly, creeping sections might act as barriers to
+  earthquake propagation, as suggested by some observations
+  (<xref alt="Chlieh et al., 2008" rid="ref-chlieh_heterogeneous_2008" ref-type="bibr">Chlieh
+  et al., 2008</xref>;
+  <xref alt="Kaneko et al., 2010" rid="ref-kaneko_towards_2010" ref-type="bibr">Kaneko
+  et al., 2010</xref>;
+  <xref alt="G. C. P. King, 1986" rid="ref-king_speculations_1986" ref-type="bibr">G.
+  C. P. King, 1986</xref>;
+  <xref alt="Perfettini et al., 2010" rid="ref-perfettini_seismic_2010" ref-type="bibr">Perfettini
+  et al., 2010</xref>). In this study, we investigate the subsurface
+  rupture of the Elazığ earthquake and its relationship to fault
+  geometry and inter-seismic slip deficit. While assuming a fault
+  structure with a realistic geometry, we also account for its inherent
+  uncertainties, as well as uncertainties related to assumptions on the
+  crustal structure. We adopt a Bayesian sampling approach which allows
+  us to sample a large panel of possible slip models and to estimate the
+  posterior uncertainty on the inverted slip distribution. This approach
+  allows us to describe the rupture of the Elazığ in detail, while
+  discussing how it may have been driven by structural complexity.
+  Finally, we also provide an updated intepretation of the seismic
+  budget for the central EAF.</p>
+  <p>To refer to a figure, use Fig. <xref ref-type="fig" alt="2" rid="bla">2</xref> or
+  Figs <xref ref-type="fig" alt="1" rid="figU003A1">1</xref>,
+  <xref ref-type="fig" alt="2" rid="bla">2</xref>. its inherent uncertainties, as well
+  as uncertainties related to assumptions on the crustal structure. We
+  adopt a Bayesian sampling approach which allows us to sample a large
+  panel of p Test
+  Figs <xref ref-type="fig" alt="1" rid="figU003A1">1</xref>-<xref ref-type="fig" alt="2" rid="bla">2</xref>,
+  <xref ref-type="fig" alt="2" rid="bla">2</xref></p>
+  <fig id="figU003A1">
+    <caption><p>s ipsum. Praesent mauris. Fusce nec tellus sed augue
+    semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+    Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+    per inceptos himenaeos. Curabitur sodales ligula in libero. Sed
+    dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean
+    quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis
+    tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi
+    lectus risus, iaculis vel, suscipit quis, luctu..</p></caption>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="empty.png" xlink:title="" />
+  </fig>
+</sec>
+<sec id="section-1">
+  <title>Section 1</title>
+  <sec id="subsection">
+    <title>Subsection </title>
+    <fig id="bla">
+      <caption><p>s ipsum. Praesent mauris. Fusce nec tellus sed augue
+      semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+      Class aptent taciti sociosqu ad litora torquent per conubia
+      nostra, per inceptos himenaeos. Curabitur sodales ligula in
+      libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque
+      nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.
+      Sed convallis tristique sem. Proin ut ligula vel nunc egestas
+      porttitor. Morbi lectus risus, iaculis vel, suscipit quis,
+      luctu..</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="empty2.png" xlink:title="" />
+    </fig>
+    <p>In this study, we investigate the subsurface rupture of the
+    Elazığ earthquake and its relationship to fault geometry and
+    inter-seismic slip deficit. While assuming a fault structure with a
+    realistic geometry, we also account for its inherent uncertainties,
+    as well as uncertainties related to assumptions on the crustal
+    structure. We adopt a Bayesian sampling approach which allows us to
+    sample a large panel of possible slip models and to estimate the
+    posterior uncertainty on the inverted slip distribution. This
+    approach allows us to describe the rupture of the Elazığ in detail,
+    while discussing how it may have been driven by structural
+    complexity. Finally, we also provide an updated intepretation of the
+    seismic budget for the central EAF.In this study, we investigate the
+    subsurface rupture of the Elazığ earthquake and its relationship to
+    fault geometry and inter-seismic slip deficit. While assuming a
+    fault structure with a realistic geometry, we also account for its
+    inherent uncertainties, as well as uncertainties related to
+    assumptions on the crustal structure. We adopt a Bayesian sampling
+    approach which allows us to sample a large panel of possible slip
+    models and to estimate the posterior uncertainty on the inverted
+    slip distribution. This approach allows us to describe the rupture
+    of the Elazığ in detail, while discussing how it may have been
+    driven by structural complexity. Finally, we also provide an updated
+    intepretation of the seismic budget for the central EAF. eq
+    <xref alt="[eq:1]" rid="eqU003A1">[eq:1]</xref></p>
+    <p><disp-formula>
+    <tex-math id="eq003A1"><![CDATA[\cos z=(1/2)(2\cos z)=(1/2)(2\cos z+j\sin z-j\sin z)=(1/2)(\cos z+j\sin z+\cos z-j\sin z)=(1/2)(e^{jz}+e^{-jz})]]></tex-math>
+</disp-formula></p>
+    <p>In this study, we investigate the subsurface rupture of the
+    Elazığ earthquake and its relationship to fault geometry and
+    inter-seismic slip deficit. While assuming a fault structure with a
+    realistic geometry, we also account for its inherent uncertainties,
+    as well as uncertainties related to assumptions on the crustal
+    structure. We adopt a Bayesian sampling approach which allows us to
+    sample a large panel of possible slip models and to estimate the
+    posterior uncertainty on the inverted slip distribution. This
+    approach allows us to describe the rupture of the Elazığ in detail,
+    while discussing how it may have been driven by structural
+    complexity. Finally, we also provide an updated intepretation of the
+    seismic budget for the central EAF. In this study, we investigate
+    the subsurface rupture of the Elazığ earthquake and its relationship
+    to fault geometry and inter-seismic slip deficit. While assuming a
+    fault structure with a realistic geometry, we also account for its
+    inherent uncertainties, as well as uncertainties related to
+    assumptions on the crustal structure. We adopt a Bayesian sampling
+    approach which allows us to sample a large panel of possible slip
+    models and to estimate the posterior uncertainty on the inverted
+    slip distribution. This approach allows us to describe the rupture
+    of the Elazığ in detail, while discussing how it may have been
+    driven by structural complexity. Finally, we also provide an updated
+    intepretation of the seismic budget for the central EAF. In this
+    study, we invesw it may have been driven by structural complexity. Finally, we
+    also provide an updated intepretation of the seismic budget for the
+    central EAF. I ref a
+    Tab. <xref ref-type="table" alt="[tab:1]" rid="tabU003A1">1</xref>.</p>
+<table-wrap id="tabU003A1">
+<caption>
+<p>s ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabi</p>
+</caption>
+<table frame="box" rules="all" cellpadding="5">
+<tbody>
+<table><tr><td>Animal  22</td><td>Description</td><td>Price (\$)</td></tr><tr><td>Gnat</td><td>per gram</td><td>13.65</td></tr><tr><td></td><td>each</td><td>0.01</td></tr><tr><td>Gnu</td><td>stuffed</td><td>92.50</td></tr><tr><td>Emu</td><td>stuffed</td><td>33.33</td></tr><tr><td>Armadillo</td><td>frozen</td><td>8.99</td></tr></table>
+</tbody>
+</table>
+</table-wrap>
+    <p>In this study, we investigate the subsurface rupture of the
+    Elazığ earthquake and its relationship to fault geometry and
+    inter-seismic slip deficit. While assuming a fault structure with a
+    realistic geometry, we also account for its inherent uncertainties,
+    as well as uncertainties related to assumptions on the crustal
+    structure. We adopt a Bayesian sampling approach which allows us to
+    sample a large panel of possible slip models and to estimate the
+    posterior uncertainty on the inverted slip distribution. This
+    approach allows us to describe the rupture of the Elazığ in detail,
+    while discussing how it may have been driven by structural
+    complexity. Finally, we also provide an updated intepretation of the
+    seismic budget for the central EAF. In this study, we investigate
+    the subsurface rupture of the Elazığ earthquake and its relationship
+    to fault geometry and inter-seismic slip deficit. While assuming a
+    fault structure with a realistic geometry, we also account for its
+    inherent uncertainties, as well as uncertainties related to
+    assumptions on the crustal structure. We adopt a Bayesian sampling
+    approach which allows us to sample a large panel of possible slip
+    models and to estimate the posterior uncertainty on the inverted
+    slip distribution. This approach allows us to describe the rupture
+    of the Elazığ in detail, while discussing how it may have been
+    driven by structural complexity. Finally, we also provide an updated
+    intepretation of the seismic budget for the central EAF. I ref a
+    Tab. <xref ref-type="table" alt="[tab2]" rid="tab2">2</xref>.</p>
+<table-wrap id="tab2">
+<caption>
+<p>s ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabi</p>
+</caption>
+<table frame="box" rules="all" cellpadding="5">
+<tbody>
+<table><tr><td>Animal  22</td><td>Description</td><td>Price (\$)</td></tr><tr><td>Gnat</td><td>per gram</td><td>13.65</td></tr><tr><td></td><td>each</td><td>0.01</td></tr><tr><td>Gnu</td><td>stuffed</td><td>92.50</td></tr><tr><td>Emu</td><td>stuffed</td><td>33.33</td></tr><tr><td>Armadillo</td><td>frozen</td><td>8.99</td></tr></table>
+</tbody>
+</table>
+</table-wrap>
+  </sec>
+</sec>
+<sec id="acknowledgements">
+  <title>Acknowledgements</title>
+  <p>Thank all relevant parties and acknowledge funding sources, if
+  any.</p>
+</sec>
+<sec id="data-availability">
+  <title>Data availability</title>
+  <p>Authors should direct readers to an open access repository such as
+  figshare or Github, where data are made available.</p>
+</sec>
+<sec id="author-contributions">
+<title>Author contributions</title>
+<p>Funding acquisition: Alice, Bob. Writing: Charlie, Doris. Analysis: Emilio, Francis. </p>
+</sec>
+</body>
+<back>
+<ref-list>
+  <ref-list>
+    <ref id="ref-aktug_slip_2016">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Aktug</surname><given-names>B.</given-names></name>
+          <name><surname>Ozener</surname><given-names>H.</given-names></name>
+          <name><surname>Dogru</surname><given-names>A.</given-names></name>
+          <name><surname>Sabuncu</surname><given-names>A.</given-names></name>
+          <name><surname>Turgut</surname><given-names>B.</given-names></name>
+          <name><surname>Halicioglu</surname><given-names>K.</given-names></name>
+          <name><surname>Yilmaz</surname><given-names>O.</given-names></name>
+          <name><surname>Havazli</surname><given-names>E.</given-names></name>
+        </person-group>
+        <article-title>Slip rates and seismic potential on the East Anatolian Fault System using an improved GPS velocity field</article-title>
+        <source>Journal of Geodynamics</source>
+        <year iso-8601-date="2016">2016</year>
+        <volume>94-95</volume>
+        <issn>0264-3707</issn>
+        <pub-id pub-id-type="doi">10.1016/j.jog.2016.01.001</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-ambraseys_characteristic_1970">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Ambraseys</surname><given-names>N. N.</given-names></name>
+        </person-group>
+        <article-title>Some characteristic features of the Anatolian fault zone</article-title>
+        <source>Tectonophysics</source>
+        <year iso-8601-date="1970">1970</year>
+        <volume>9</volume>
+        <issue>2</issue>
+        <issn>0040-1951</issn>
+        <pub-id pub-id-type="doi">10.1016/0040-1951(70)90014-4</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-ambraseys_faulting_1998">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Ambraseys</surname><given-names>N. N.</given-names></name>
+          <name><surname>Jackson</surname><given-names>J. A.</given-names></name>
+        </person-group>
+        <article-title>Faulting associated with historical and recent earthquakes in the Eastern Mediterranean region</article-title>
+        <source>Geophysical Journal International</source>
+        <year iso-8601-date="1998">1998</year>
+        <volume>133</volume>
+        <issue>2</issue>
+        <issn>0956-540X</issn>
+        <pub-id pub-id-type="doi">10.1046/j.1365-246X.1998.00508.x</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-aochi_effect_2002">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Aochi</surname><given-names>Hideo</given-names></name>
+          <name><surname>Madariaga</surname><given-names>Raúl</given-names></name>
+          <name><surname>Fukuyama</surname><given-names>Eiichi</given-names></name>
+        </person-group>
+        <article-title>Effect of normal stress during rupture propagation along nonplanar faults</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2002">2002</year>
+        <volume>107</volume>
+        <issue>B2</issue>
+        <issn>2156-2202</issn>
+        <pub-id pub-id-type="doi">10.1029/2001JB000500</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-armijo_westward_1999">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Armijo</surname><given-names>Rolando</given-names></name>
+          <name><surname>Meyer</surname><given-names>Bertrand</given-names></name>
+          <name><surname>Hubert</surname><given-names>Aurélia</given-names></name>
+          <name><surname>Barka</surname><given-names>Aykut</given-names></name>
+        </person-group>
+        <article-title>Westward propagation of the North Anatolian fault into the northern Aegean: Timing and kinematics</article-title>
+        <source>Geology</source>
+        <year iso-8601-date="1999">1999</year>
+        <volume>27</volume>
+        <issue>3</issue>
+        <issn>0091-7613</issn>
+        <pub-id pub-id-type="doi">10.1130/0091-7613(1999)027&lt;0267:WPOTNA&gt;2.3.CO;2</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-barka_slip_1996">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Barka</surname><given-names>Aykut</given-names></name>
+        </person-group>
+        <article-title>Slip distribution along the North Anatolian fault associated with the large earthquakes of the period 1939 to 1967</article-title>
+        <source>Bulletin of the Seismological Society of America</source>
+        <year iso-8601-date="1996">1996</year>
+        <volume>86</volume>
+        <issue>5</issue>
+        <issn>0037-1106</issn>
+      </element-citation>
+    </ref>
+    <ref id="ref-barka_strike-slip_1988">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Barka</surname><given-names>A. A.</given-names></name>
+          <name><surname>Kadinsky-Cade</surname><given-names>K.</given-names></name>
+        </person-group>
+        <article-title>Strike-slip fault geometry in Turkey and its influence on earthquake activity</article-title>
+        <source>Tectonics</source>
+        <year iso-8601-date="1988">1988</year>
+        <volume>7</volume>
+        <issue>3</issue>
+        <issn>1944-9194</issn>
+        <pub-id pub-id-type="doi">10.1029/TC007i003p00663</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-bletery_distribution_2020-1">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Bletery</surname><given-names>Quentin</given-names></name>
+          <name><surname>Cavalié</surname><given-names>Olivier</given-names></name>
+          <name><surname>Nocquet</surname><given-names>Jean-Mathieu</given-names></name>
+          <name><surname>Ragon</surname><given-names>Théa</given-names></name>
+        </person-group>
+        <article-title>Distribution of Interseismic Coupling Along the North and East Anatolian Faults Inferred From InSAR and GPS Data</article-title>
+        <source>Geophysical Research Letters</source>
+        <year iso-8601-date="2020">2020</year>
+        <volume>47</volume>
+        <issue>16</issue>
+        <issn>1944-8007</issn>
+        <pub-id pub-id-type="doi">10.1029/2020GL087775</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-bulut_east_2012">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Bulut</surname><given-names>Fatih</given-names></name>
+          <name><surname>Bohnhoff</surname><given-names>Marco</given-names></name>
+          <name><surname>Eken</surname><given-names>Tuna</given-names></name>
+          <name><surname>Janssen</surname><given-names>Christoph</given-names></name>
+          <name><surname>Kılıç</surname><given-names>Tuğbay</given-names></name>
+          <name><surname>Dresen</surname><given-names>Georg</given-names></name>
+        </person-group>
+        <article-title>The East Anatolian Fault Zone: Seismotectonic setting and spatiotemporal characteristics of seismicity based on precise earthquake locations</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2012">2012</year>
+        <volume>117</volume>
+        <issue>B7</issue>
+        <issn>2156-2202</issn>
+        <pub-id pub-id-type="doi">10.1029/2011JB008966</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-cakir_insar_2014-1">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Cakir</surname><given-names>Ziyadin</given-names></name>
+          <name><surname>Ergintav</surname><given-names>Semih</given-names></name>
+          <name><surname>Akoğlu</surname><given-names>Ahmet M.</given-names></name>
+          <name><surname>Çakmak</surname><given-names>Rahşan</given-names></name>
+          <name><surname>Tatar</surname><given-names>Orhan</given-names></name>
+          <name><surname>Meghraoui</surname><given-names>Mustapha</given-names></name>
+        </person-group>
+        <article-title>InSAR velocity field across the North Anatolian Fault (eastern Turkey): Implications for the loading and release of interseismic strain accumulation</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2014">2014</year>
+        <volume>119</volume>
+        <issue>10</issue>
+        <issn>2169-9356</issn>
+        <pub-id pub-id-type="doi">10.1002/2014JB011360</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-cavalie_block-like_2014">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Cavalié</surname><given-names>Olivier</given-names></name>
+          <name><surname>Jónsson</surname><given-names>Sigurjón</given-names></name>
+        </person-group>
+        <article-title>Block-like plate movements in eastern Anatolia observed by InSAR</article-title>
+        <source>Geophysical Research Letters</source>
+        <year iso-8601-date="2014">2014</year>
+        <issn>0094-8276</issn>
+        <pub-id pub-id-type="doi">10.1002/2013GL058170@10.1002/(ISSN)1944-8007.GRLeditorhghlts2014</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-cetin_paleoseismology_2003">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Cetin</surname><given-names>Hasan</given-names></name>
+          <name><surname>Güneyli</surname><given-names>Hakan</given-names></name>
+          <name><surname>Mayer</surname><given-names>Larry</given-names></name>
+        </person-group>
+        <article-title>Paleoseismology of the Palu segment of the East Anatolian Fault Zone, Turkey</article-title>
+        <source>Tectonophysics</source>
+        <year iso-8601-date="2003">2003</year>
+        <volume>374</volume>
+        <issue>3</issue>
+        <issn>0040-1951</issn>
+        <pub-id pub-id-type="doi">10.1016/j.tecto.2003.08.003</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-chlieh_heterogeneous_2008">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Chlieh</surname><given-names>M.</given-names></name>
+          <name><surname>Avouac</surname><given-names>J. P.</given-names></name>
+          <name><surname>Sieh</surname><given-names>K.</given-names></name>
+          <name><surname>Natawidjaja</surname><given-names>D. H.</given-names></name>
+          <name><surname>Galetzka</surname><given-names>John</given-names></name>
+        </person-group>
+        <article-title>Heterogeneous coupling of the Sumatran megathrust constrained by geodetic and paleogeodetic measurements</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2008">2008</year>
+        <volume>113</volume>
+        <issue>B5</issue>
+        <issn>2156-2202</issn>
+        <pub-id pub-id-type="doi">10.1029/2007JB004981</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-duan_multicycle_2005">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Duan</surname><given-names>Benchun</given-names></name>
+          <name><surname>Oglesby</surname><given-names>David D.</given-names></name>
+        </person-group>
+        <article-title>Multicycle dynamics of nonplanar strike-slip faults</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2005">2005</year>
+        <volume>110</volume>
+        <issue>B3</issue>
+        <issn>2156-2202</issn>
+        <pub-id pub-id-type="doi">10.1029/2004JB003298</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-duman_east_2013">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Duman</surname><given-names>Tamer Y.</given-names></name>
+          <name><surname>Emre</surname><given-names>Ömer</given-names></name>
+        </person-group>
+        <article-title>The East Anatolian Fault: Geometry, segmentation and jog characteristics</article-title>
+        <source>Geological Society, London, Special Publications</source>
+        <year iso-8601-date="2013">2013</year>
+        <volume>372</volume>
+        <issue>1</issue>
+        <issn>0305-8719, 2041-4927</issn>
+        <pub-id pub-id-type="doi">10.1144/SP372.14</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-hubert-ferrari_3800_2020">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Hubert-Ferrari</surname><given-names>Aurélia</given-names></name>
+          <name><surname>Lamair</surname><given-names>Laura</given-names></name>
+          <name><surname>Hage</surname><given-names>Sophie</given-names></name>
+          <name><surname>Schmidt</surname><given-names>Sabine</given-names></name>
+          <name><surname>Çağatay</surname><given-names>M. Namık</given-names></name>
+          <name><surname>Avşar</surname><given-names>Ulaş</given-names></name>
+        </person-group>
+        <article-title>A 3800 yr paleoseismic record (Lake Hazar sediments, eastern Turkey): Implications for the East Anatolian Fault seismic cycle</article-title>
+        <source>Earth and Planetary Science Letters</source>
+        <year iso-8601-date="2020">2020</year>
+        <volume>538</volume>
+        <issn>0012-821X</issn>
+        <pub-id pub-id-type="doi">10.1016/j.epsl.2020.116152</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-hussain_constant_2018">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Hussain</surname><given-names>Ekbal</given-names></name>
+          <name><surname>Wright</surname><given-names>Tim J.</given-names></name>
+          <name><surname>Walters</surname><given-names>Richard J.</given-names></name>
+          <name><surname>Bekaert</surname><given-names>David P. S.</given-names></name>
+          <name><surname>Lloyd</surname><given-names>Ryan</given-names></name>
+          <name><surname>Hooper</surname><given-names>Andrew</given-names></name>
+        </person-group>
+        <article-title>Constant strain accumulation rate between major earthquakes on the North Anatolian Fault</article-title>
+        <source>Nature Communications</source>
+        <publisher-name>Nature Publishing Group</publisher-name>
+        <year iso-8601-date="2018">2018</year>
+        <volume>9</volume>
+        <issue>1</issue>
+        <issn>2041-1723</issn>
+        <pub-id pub-id-type="doi">10.1038/s41467-018-03739-2</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-kaneko_interseismic_2013">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Kaneko</surname><given-names>Y.</given-names></name>
+          <name><surname>Fialko</surname><given-names>Y.</given-names></name>
+          <name><surname>Sandwell</surname><given-names>D. T.</given-names></name>
+          <name><surname>Tong</surname><given-names>X.</given-names></name>
+          <name><surname>Furuya</surname><given-names>M.</given-names></name>
+        </person-group>
+        <article-title>Interseismic deformation and creep along the central section of the North Anatolian Fault (Turkey): InSAR observations and implications for rate-and-state friction properties</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2013">2013</year>
+        <volume>118</volume>
+        <issue>1</issue>
+        <issn>2169-9356</issn>
+        <pub-id pub-id-type="doi">10.1029/2012JB009661</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-kaneko_towards_2010">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Kaneko</surname><given-names>Yoshihiro</given-names></name>
+          <name><surname>Avouac</surname><given-names>Jean-Philippe</given-names></name>
+          <name><surname>Lapusta</surname><given-names>Nadia</given-names></name>
+        </person-group>
+        <article-title>Towards inferring earthquake patterns from geodetic observations of interseismic coupling</article-title>
+        <source>Nature Geoscience</source>
+        <year iso-8601-date="2010">2010</year>
+        <volume>3</volume>
+        <issue>5</issue>
+        <issn>1752-0908</issn>
+        <pub-id pub-id-type="doi">10.1038/ngeo843</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-king_role_1985">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>King</surname><given-names>Geoffrey</given-names></name>
+          <name><surname>Nabelek</surname><given-names>John</given-names></name>
+        </person-group>
+        <article-title>Role of Fault Bends in the Initiation and Termination of Earthquake Rupture</article-title>
+        <source>Science</source>
+        <year iso-8601-date="1985">1985</year>
+        <volume>228</volume>
+        <issue>4702</issue>
+        <issn>0036-8075, 1095-9203</issn>
+        <pub-id pub-id-type="doi">10.1126/science.228.4702.984</pub-id>
+        <pub-id pub-id-type="pmid">17797661</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-king_speculations_1986">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>King</surname><given-names>G. C. P.</given-names></name>
+        </person-group>
+        <article-title>Speculations on the geometry of the initiation and termination processes of earthquake rupture and its relation to morphology and geological structure</article-title>
+        <source>pure and applied geophysics</source>
+        <year iso-8601-date="1986">1986</year>
+        <volume>124</volume>
+        <issue>3</issue>
+        <issn>1420-9136</issn>
+        <pub-id pub-id-type="doi">10.1007/BF00877216</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-mcclusky_global_2000">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>McClusky</surname><given-names>S.</given-names></name>
+          <name><surname>Balassanian</surname><given-names>S.</given-names></name>
+          <name><surname>Barka</surname><given-names>A.</given-names></name>
+          <name><surname>Demir</surname><given-names>C.</given-names></name>
+          <name><surname>Ergintav</surname><given-names>S.</given-names></name>
+          <name><surname>Georgiev</surname><given-names>I.</given-names></name>
+          <name><surname>Gurkan</surname><given-names>O.</given-names></name>
+          <name><surname>Hamburger</surname><given-names>M.</given-names></name>
+          <name><surname>Hurst</surname><given-names>K.</given-names></name>
+          <name><surname>Kahle</surname><given-names>H.</given-names></name>
+          <name><surname>Kastens</surname><given-names>K.</given-names></name>
+          <name><surname>Kekelidze</surname><given-names>G.</given-names></name>
+          <name><surname>King</surname><given-names>R.</given-names></name>
+          <name><surname>Kotzev</surname><given-names>V.</given-names></name>
+          <name><surname>Lenk</surname><given-names>O.</given-names></name>
+          <name><surname>Mahmoud</surname><given-names>S.</given-names></name>
+          <name><surname>Mishin</surname><given-names>A.</given-names></name>
+          <name><surname>Nadariya</surname><given-names>M.</given-names></name>
+          <name><surname>Ouzounis</surname><given-names>A.</given-names></name>
+          <name><surname>Paradissis</surname><given-names>D.</given-names></name>
+          <name><surname>Peter</surname><given-names>Y.</given-names></name>
+          <name><surname>Prilepin</surname><given-names>M.</given-names></name>
+          <name><surname>Reilinger</surname><given-names>R.</given-names></name>
+          <name><surname>Sanli</surname><given-names>I.</given-names></name>
+          <name><surname>Seeger</surname><given-names>H.</given-names></name>
+          <name><surname>Tealeb</surname><given-names>A.</given-names></name>
+          <name><surname>Toksöz</surname><given-names>M. N.</given-names></name>
+          <name><surname>Veis</surname><given-names>G.</given-names></name>
+        </person-group>
+        <article-title>Global Positioning System constraints on plate kinematics and dynamics in the eastern Mediterranean and Caucasus</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2000">2000</year>
+        <volume>105</volume>
+        <issue>B3</issue>
+        <issn>2156-2202</issn>
+        <pub-id pub-id-type="doi">10.1029/1999JB900351</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-mckenzie_active_1972">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>McKenzie</surname><given-names>Dan</given-names></name>
+        </person-group>
+        <article-title>Active Tectonics of the Mediterranean Region</article-title>
+        <source>Geophysical Journal International</source>
+        <year iso-8601-date="1972">1972</year>
+        <volume>30</volume>
+        <issue>2</issue>
+        <issn>0956-540X</issn>
+        <pub-id pub-id-type="doi">10.1111/j.1365-246X.1972.tb02351.x</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-mckenzie_plate_1970">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Mckenzie</surname><given-names>D. P.</given-names></name>
+        </person-group>
+        <article-title>Plate Tectonics of the Mediterranean Region</article-title>
+        <source>Nature</source>
+        <year iso-8601-date="1970">1970</year>
+        <volume>226</volume>
+        <issue>5242</issue>
+        <issn>1476-4687</issn>
+        <pub-id pub-id-type="doi">10.1038/226239a0</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-perfettini_seismic_2010">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Perfettini</surname><given-names>Hugo</given-names></name>
+          <name><surname>Avouac</surname><given-names>Jean-Philippe</given-names></name>
+          <name><surname>Tavera</surname><given-names>Hernando</given-names></name>
+          <name><surname>Kositsky</surname><given-names>Andrew</given-names></name>
+          <name><surname>Nocquet</surname><given-names>Jean-Mathieu</given-names></name>
+          <name><surname>Bondoux</surname><given-names>Francis</given-names></name>
+          <name><surname>Chlieh</surname><given-names>Mohamed</given-names></name>
+          <name><surname>Sladen</surname><given-names>Anthony</given-names></name>
+          <name><surname>Audin</surname><given-names>Laurence</given-names></name>
+          <name><surname>Farber</surname><given-names>Daniel L.</given-names></name>
+          <name><surname>Soler</surname><given-names>Pierre</given-names></name>
+        </person-group>
+        <article-title>Seismic and aseismic slip on the Central Peru megathrust</article-title>
+        <source>Nature</source>
+        <year iso-8601-date="2010">2010</year>
+        <volume>465</volume>
+        <issue>7294</issue>
+        <issn>00280836</issn>
+      </element-citation>
+    </ref>
+    <ref id="ref-reilinger_gps_2006">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Reilinger</surname><given-names>Robert</given-names></name>
+          <name><surname>McClusky</surname><given-names>Simon</given-names></name>
+          <name><surname>Vernant</surname><given-names>Philippe</given-names></name>
+          <name><surname>Lawrence</surname><given-names>Shawn</given-names></name>
+          <name><surname>Ergintav</surname><given-names>Semih</given-names></name>
+          <name><surname>Cakmak</surname><given-names>Rahsan</given-names></name>
+          <name><surname>Ozener</surname><given-names>Haluk</given-names></name>
+          <name><surname>Kadirov</surname><given-names>Fakhraddin</given-names></name>
+          <name><surname>Guliev</surname><given-names>Ibrahim</given-names></name>
+          <name><surname>Stepanyan</surname><given-names>Ruben</given-names></name>
+          <name><surname>Nadariya</surname><given-names>Merab</given-names></name>
+          <name><surname>Hahubia</surname><given-names>Galaktion</given-names></name>
+          <name><surname>Mahmoud</surname><given-names>Salah</given-names></name>
+          <name><surname>Sakr</surname><given-names>K.</given-names></name>
+          <name><surname>ArRajehi</surname><given-names>Abdullah</given-names></name>
+          <name><surname>Paradissis</surname><given-names>Demitris</given-names></name>
+          <name><surname>Al-Aydrus</surname><given-names>A.</given-names></name>
+          <name><surname>Prilepin</surname><given-names>Mikhail</given-names></name>
+          <name><surname>Guseva</surname><given-names>Tamara</given-names></name>
+          <name><surname>Evren</surname><given-names>Emre</given-names></name>
+          <name><surname>Dmitrotsa</surname><given-names>Andriy</given-names></name>
+          <name><surname>Filikov</surname><given-names>S. V.</given-names></name>
+          <name><surname>Gomez</surname><given-names>Francisco</given-names></name>
+          <name><surname>Al-Ghazzi</surname><given-names>Riad</given-names></name>
+          <name><surname>Karam</surname><given-names>Gebran</given-names></name>
+        </person-group>
+        <article-title>GPS constraints on continental deformation in the Africa-Arabia-Eurasia continental collision zone and implications for the dynamics of plate interactions</article-title>
+        <source>Journal of Geophysical Research: Solid Earth</source>
+        <year iso-8601-date="2006">2006</year>
+        <volume>111</volume>
+        <issue>B5</issue>
+        <issn>2156-2202</issn>
+        <pub-id pub-id-type="doi">10.1029/2005JB004051</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-sengor_north_2005">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Şengör</surname><given-names>A. M. C</given-names></name>
+          <name><surname>Tüysüz</surname><given-names>Okan</given-names></name>
+          <name><surname>İmren</surname><given-names>Caner</given-names></name>
+          <name><surname>Sakınç</surname><given-names>Mehmet</given-names></name>
+          <name><surname>Eyidoğan</surname><given-names>Haluk</given-names></name>
+          <name><surname>Görür</surname><given-names>Naci</given-names></name>
+          <name><surname>Le Pichon</surname><given-names>Xavier</given-names></name>
+          <name><surname>Rangin</surname><given-names>Claude</given-names></name>
+        </person-group>
+        <article-title>The North Anatolian Fault: A New Look</article-title>
+        <source>Annual Review of Earth and Planetary Sciences</source>
+        <year iso-8601-date="2005">2005</year>
+        <volume>33</volume>
+        <issue>1</issue>
+        <pub-id pub-id-type="doi">10.1146/annurev.earth.32.101802.120415</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-stein_progressive_1997">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Stein</surname><given-names>Ross S.</given-names></name>
+          <name><surname>Barka</surname><given-names>Aykut A.</given-names></name>
+          <name><surname>Dieterich</surname><given-names>James H.</given-names></name>
+        </person-group>
+        <article-title>Progressive failure on the North Anatolian fault since 1939 by earthquake stress triggering</article-title>
+        <source>Geophysical Journal International</source>
+        <year iso-8601-date="1997">1997</year>
+        <volume>128</volume>
+        <issue>3</issue>
+        <issn>0956-540X</issn>
+        <pub-id pub-id-type="doi">10.1111/j.1365-246X.1997.tb05321.x</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-tatar_surface_2020">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Tatar</surname><given-names>Orhan</given-names></name>
+          <name><surname>Sözbilir</surname><given-names>Hasan</given-names></name>
+          <name><surname>Koçbulut</surname><given-names>Fikret</given-names></name>
+          <name><surname>Bozkurt</surname><given-names>Erdin</given-names></name>
+          <name><surname>Aksoy</surname><given-names>Ercan</given-names></name>
+          <name><surname>Eski</surname><given-names>Semih</given-names></name>
+          <name><surname>Özmen</surname><given-names>Bülent</given-names></name>
+          <name><surname>Alan</surname><given-names>Hüseyin</given-names></name>
+          <name><surname>Metin</surname><given-names>Yüksel</given-names></name>
+        </person-group>
+        <article-title>Surface deformations of 24 January 2020 Sivrice (Elazığ) (Malatya) earthquake (Mw = 6.8) along the Pütürge segment of the East Anatolian Fault Zone and its comparison with Turkey’s 100-year-surface ruptures</article-title>
+        <source>Mediterranean Geoscience Reviews</source>
+        <year iso-8601-date="2020">2020</year>
+        <issn>2661-8648</issn>
+        <pub-id pub-id-type="doi">10.1007/s42990-020-00037-2</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-walters_interseismic_2011">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Walters</surname><given-names>R. J.</given-names></name>
+          <name><surname>Holley</surname><given-names>R. J.</given-names></name>
+          <name><surname>Parsons</surname><given-names>B.</given-names></name>
+          <name><surname>Wright</surname><given-names>T. J.</given-names></name>
+        </person-group>
+        <article-title>Interseismic strain accumulation across the North Anatolian Fault from Envisat InSAR measurements</article-title>
+        <source>Geophysical Research Letters</source>
+        <year iso-8601-date="2011">2011</year>
+        <volume>38</volume>
+        <issue>5</issue>
+        <issn>1944-8007</issn>
+        <pub-id pub-id-type="doi">10.1029/2010GL046443</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-wesnousky_predicting_2006">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Wesnousky</surname><given-names>Steven G.</given-names></name>
+        </person-group>
+        <article-title>Predicting the endpoints of earthquake ruptures</article-title>
+        <source>Nature</source>
+        <year iso-8601-date="2006">2006</year>
+        <volume>444</volume>
+        <issue>7117</issue>
+        <issn>1476-4687</issn>
+        <pub-id pub-id-type="doi">10.1038/nature05275</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-wright_measurement_2001">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Wright</surname><given-names>Tim</given-names></name>
+          <name><surname>Parsons</surname><given-names>Barry</given-names></name>
+          <name><surname>Fielding</surname><given-names>Eric</given-names></name>
+        </person-group>
+        <article-title>Measurement of interseismic strain accumulation across the North Anatolian Fault by satellite radar interferometry</article-title>
+        <source>Geophysical Research Letters</source>
+        <year iso-8601-date="2001">2001</year>
+        <volume>28</volume>
+        <issue>10</issue>
+        <issn>1944-8007</issn>
+        <pub-id pub-id-type="doi">10.1029/2000GL012850</pub-id>
+      </element-citation>
+    </ref>
+    <ref id="ref-yilmaz_kinematics_2006">
+      <element-citation publication-type="article-journal">
+        <person-group person-group-type="author">
+          <name><surname>Yilmaz</surname><given-names>Huseyin</given-names></name>
+          <name><surname>Over</surname><given-names>Semir</given-names></name>
+          <name><surname>Ozden</surname><given-names>Suha</given-names></name>
+        </person-group>
+        <article-title>Kinematics of the East Anatolian Fault Zone between Turkoglu (Kahramanmaras) and Celikhan (Adiyaman), eastern Turkey</article-title>
+        <source>Earth, Planets and Space</source>
+        <year iso-8601-date="2006">2006</year>
+        <volume>58</volume>
+        <issue>11</issue>
+        <issn>1880-5981</issn>
+        <pub-id pub-id-type="doi">10.1186/BF03352645</pub-id>
+      </element-citation>
+    </ref>
+  </ref-list>
+</ref-list>
+<fn-group>
+  <fn id="fn1">
+    <label>1</label><p>Corresponding author: bla@som.ac.edu</p>
+  </fn>
+</fn-group>
+</back>
+</article>

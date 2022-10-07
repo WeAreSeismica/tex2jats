@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Seismica
+% LuaLaTeX Template
+% Version 1 (2022)
+%
+%
+% Important note:
+% This template must be compiled with LuaLaTeX, the below lines will ensure this
+%!TEX TS-program = lualatex
+%!TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Options available: review, onecolumn, fastreport, anonymous
+% Please sumathbfupit with the review option ON
+% For manuscripts with heavy formulas, you can specify the onecolum option OR the breakmath option (loads the package breqn, to break mathematical expressions you will need to use the dmath environment instead of equation)
+%\documentclass[onecolumn]{seismica}
+%\documentclass[fastreport,breakmath]{seismica}
+\documentclass[breakmath]{seismica}
+
+
+\usepackage{lipsum} % for template, to remove
+
+\title{A template for Seismica}
+
+\author[1]{A. Author1
+	\orcid{0000-0002-1825-0097}
+	\thanks{Corresponding author: bla@som.ac.edu}}
+\author[1]{B. author2 
+	\orcid{0000-0002-1825-0097}}
+\author[2]{C. Author3
+	\orcid{0000-0002-1825-0097}}
+\affil[1]{affil Author 1 and 2 }
+\affil[2]{affil author 3}
+
+\credit{Funding acquisition}{Alice, Bob}
+\credit{Writing}{Charlie, Doris}
+\credit{Analysis}{Emilio, Francis}
+
+\doi{10.1038/s41561-020-00679-9}
+\receiveddate{March 5, 2021} % YYYY MM DD
+\accepteddate{March 5, 2021}
+\publisheddate{March 5, 2021}
+\theyear{2022}
+\thevolume{1}
+\thenumber{1}
+\editorname{E. Editorname}
+\copyedname{C. Copyed}
+\typesetname{T. Typesetting}
+\prodname{P. Production}
+
+\setotherlanguages{french}
+% if an additional font is needed for the abstract, load it with:
+% also see https://www.overleaf.com/latex/examples/how-to-write-multilingual-text-with-different-scripts-in-latex/wfdxqhcyyjxz for reference
+%\setotherlanguages{french,thai}
+%\newfontfamily\thaifont[Script=Thai]{Noto Serif Thai}
+
+\begin{document}
+	
+	% up to 3 abstracts to include in {}
+	% English asbtract is first
+	% for other languages, you might have to define an additional font in preamble
+	\makeseistitle
+	{%
+	\begin{summary}{Abstract}
+		Abstract text goes here. \textbf{No more than 200 words}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctu.
+	\end{summary}
+	\begin{french}
+	\begin{summary}{Résumé}
+		Abstract text goes here. \textbf{No more than 200 words}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctu.
+	\end{summary}
+	\end{french}
+	}
+	
+
+	\section{Introduction}
+	
+	A large portion of Turkey is located on the Anatolian Plate (AP), which is slowly extruding westward as a result of the north-south collision between the Arabian and Eurasian tectonic plates \citep{mckenzie_plate_1970,mckenzie_active_1972,mcclusky_global_2000}. The westward motion of the AP is predominantly accommodated along the North and East Anatolian faults (NAF and EAF, Fig.~\ref{fig:1}). The NAF experienced a sequence of destructive earthquakes that struck within the last eighty years \citep{barka_slip_1996,stein_progressive_1997,armijo_westward_1999,sengor_north_2005}. In contrast, the EAF is generally assumed to be less active, and has only experienced small to moderate events over the last century, although large (M $> 7$) earthquakes have occured in the historical record \citep{ambraseys_characteristic_1970,ambraseys_faulting_1998,hubert-ferrari_3800_2020}.
+	
+	The EAF is a left-lateral 600-km-long strike-slip fault linking the Dead Sea fault (DSF, Fig.~\ref{fig:1}) to the Karl{\i}ova Triple Junction (KTJ, Fig.~\ref{fig:1}) where it intersects with the right-lateral NAF \citep{yilmaz_kinematics_2006,duman_east_2013}. The EAF has a complex geometry divided into several main segments, each of them characterized by bends, pull-apart basins or compressional structures \citep{duman_east_2013}, and also comprises multiple secondary sub-parallel and seismically active structures delineating a 50-km-wide fault zone \citep{bulut_east_2012}. The EAF accomodates a displacement of 9 to 15 mm/yr \citep{cetin_paleoseismology_2003,reilinger_gps_2006,cavalie_block-like_2014,aktug_slip_2016,bletery_distribution_2020-1}, with creep dominantly at depths greater than 5 km \citep{cavalie_block-like_2014,bletery_distribution_2020-1}. As a comparison, the NAF shows creep rates around 20-25 mm/yr below a locking depth of 7-25 km \citep{cakir_insar_2014-1,hussain_constant_2018,kaneko_interseismic_2013,walters_interseismic_2011,wright_measurement_2001}. Shallower portions of the EAF are characterized by an highly varying inter-seismic slip deficit, some portions being fully coupled while others appear to be at least partially creeping \citep{bletery_distribution_2020-1}. 
+	
+	The January 24 2020 6.8 earthquake ruptured the EAF between the Hazar Pull-apart Basin and the city of P\"{u}t\"{u}rge (Fig.~\ref{fig:1}). In the area, the main fault has been mapped, from the interpretation of aerial photos and field studies, as a sinuous trend interrupted by bends and step-overs whose widths do not exceed a kilometer \citep{duman_east_2013}. Coseismic surface rupture does not show a significant horizontal component and is probably mostly gravitational \citep{tatar_surface_2020}.
+		Fault segmentation and bends are thought to act as geometric barriers that can influence, or even drive, rupture initiation, termination and propagation \citep{king_role_1985,barka_strike-slip_1988,wesnousky_predicting_2006,duan_multicycle_2005,aochi_effect_2002}. Similarly, creeping sections might act as barriers to earthquake propagation, as suggested by some observations \citep{king_speculations_1986,chlieh_heterogeneous_2008,perfettini_seismic_2010,kaneko_towards_2010}. 
+	In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF.
+	
+	To refer to a figure, use Fig.~\ref{bla} or Figs~\ref{fig:1}, \ref{bla}.  its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of p Test  Figs~\ref{fig:1}-\ref{bla}, \ref{bla}
+	
+	\lipsum
+	
+	\begin{figure}
+		\includegraphics[width=\columnwidth]{empty} 
+		\caption{s ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctu..}
+		\label{fig:1}
+	\end{figure}
+	
+	
+	\section{Section 1}
+	
+	\subsection{Subsection }
+	
+	\lipsum
+	
+	\begin{figure}
+		\includegraphics[width=\textwidth]{empty2} 
+		\caption{s ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctu..}
+		\label{bla}
+	\end{figure}
+
+In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF.In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF.  eq \ref{eq:1}
+
+\begin{equation}
+\cos z=(1/2)(2\cos z)=(1/2)(2\cos z+j\sin z-j\sin z)=(1/2)(\cos z+j\sin z+\cos z-j\sin z)=(1/2)(e^{jz}+e^{-jz})
+\label{eq:1}
+\end{equation}
+	
+In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF.
+In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF.
+In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF. I ref a Tab.~\ref{tab:1}.
+	
+\begin{table}
+	\begin{tabular}
+		Animal    & Description & Price (\$) \\
+		\hline
+		Gnat      & per gram    & 13.65      \\
+		& each        & 0.01       \\
+		Gnu       & stuffed     & 92.50      \\
+		Emu       & stuffed     & 33.33      \\
+		Armadillo & frozen      & 8.99       \\
+	\end{tabular}
+	\caption{s ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabi}
+	\label{tab:1}
+\end{table}
+	
+In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF.
+In this study, we investigate the subsurface rupture of the Elaz{\i}\u{g} earthquake and its relationship to fault geometry and inter-seismic slip deficit. While assuming a fault structure with a realistic geometry, we also account for its inherent uncertainties, as well as uncertainties related to assumptions on the crustal structure. We adopt a Bayesian sampling approach which allows us to sample a large panel of possible slip models and to estimate the posterior uncertainty on the inverted slip distribution. This approach allows us to describe the rupture of the Elaz{\i}\u{g} in detail, while discussing how it may have been driven by structural complexity. Finally, we also provide an updated intepretation of the seismic budget for the central EAF. I ref a Tab.~\ref{tab2}.
+
+\begin{table}
+	\begin{tabular}
+		Animal  22  & Description & Price (\$) \\
+		\hline
+		Gnat      & per gram    & 13.65      \\
+		& each        & 0.01       \\
+		Gnu       & stuffed     & 92.50      \\
+		Emu       & stuffed     & 33.33      \\
+		Armadillo & frozen      & 8.99       \\
+	\end{tabular}
+	\caption{s ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabi}
+	\label{tab2}
+\end{table}
+
+	\section*{Acknowledgements} % Please upload separately if opting for blind review.
+	Thank all relevant parties and acknowledge funding sources, if any.
+	
+	\section*{Data availability}
+	Authors should direct readers to an open access repository such as figshare or Github, where data are made available.
+	
+	\bibliography{biblio} % a separate bibfile is required. Please upload this file along with the compiled manuscript and source file.
+	
+\end{document}
+
