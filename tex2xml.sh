@@ -6,6 +6,7 @@
 # clean some stuff in the tex file before pandoc
 sed -i 's/figure\*/figure/g' $1.tex
 # sed -i 's/seistable\*/tabular/g' $1.tex
+sed -i 's/\makeseistitle{\*/\makeseistitle\n{%/g' $1.tex
 
 # convert tex file to jats xml file
 pandoc $1.tex -f latex -t jats+element_citations --citeproc --bibliography=$2.bib --mathjax --metadata link-citations=true --natbib --csl apa.csl -s -o $1.xml
@@ -14,13 +15,15 @@ pandoc $1.tex -f latex -t jats+element_citations --citeproc --bibliography=$2.bi
 python3 metatex2jats.py $1
 
 # clean math formulas
-perl -i -00pe 's/(<disp-formula>).*?<alternatives>.*?(<tex-math)\>(.*?)(\\label\{(.*?)\}.*<\/alternatives>)/$1$2 id="$5"\>$3/gsi' $1.xml
+perl -i -00pe 's/(<disp-formula>)[\S\n\t\v ]*?<alternatives>[\S\n\t\v ].*?(<tex-math)\>([\S\n\t\v ]*?)(\\label\{([\S\n\t\v ]*?)\}[\S\n\t\v ]*?<\/alternatives>)/$1$2 id="$5"\>$3/gmi' $1.xml
+
+perl -i -00pe 's/(<inline-formula>)[\S\n\t\v ]*?<alternatives>[\S\n\t\v ].*?(<tex-math)\>([\S\n\t\v ]*?)((<\/tex-math>)([\S\n\t\v ]*?)[\S\n\t\v ]*?<\/alternatives>)/$1$2\>$3$5/gmi' $1.xml
 
 # clean ids
 python3 cleanidjats.py $1
 
 # replace jats xml file metadata
-sed -e '/front/,/\/front/!b' -e "/\/front/!d;r $1_metadata.jats" -e 'd' $1.xml > $1_galley.xml
+sed -e '/~<front~>/,/~<\/front~>/!b' -e "/~<\/front~>/!d;r $1_metadata.jats" -e 'd' $1.xml > $1_galley.xml
 
 # clean multiple abstracts in final 1_galley
 perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml
