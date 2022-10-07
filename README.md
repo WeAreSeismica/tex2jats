@@ -28,8 +28,9 @@ Before running the TeX2JATS converter, you need to have produced:
 `cp /path/to/tex2jats/*.py ./`  
 `cp  /path/to/tex2jats/apa.csl ./`  
 
-2) In your CWD, use tex2xml.sh to convert the TeX to JATS XML:
+2) In your CWD, use tex2xml.sh to convert the TeX to JATS XML:  
 `./tex2xml.sh proof biblio`  
+
 with:  
 - `proof`, the name of the TeX galley without the extension (which should be .tex)
 - `biblio`, the name of the corrected list of references, without the extension (which should be .bib)
