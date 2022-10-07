@@ -35,12 +35,12 @@ with:
     - `biblio`, the name of the corrected list of references, without the extension (which should be .bib)
 
 3) This will output:
-- `proof.xml`  
-- `proof_metadata.jats`  
-- `proof_credits.jats`
-- `proof_galley.xml`
-- `proof_tab1.tex` if you have one table (see point (5)), and one similar file per table
-- `proof_tab1.xml`  
+    - `proof.xml`  
+    - `proof_metadata.jats`  
+    - `proof_credits.jats`
+    - `proof_galley.xml`
+    - `proof_tab1.tex` if you have one table (see point (5)), and one similar file per table
+    - `proof_tab1.xml`  
 You will then work with the XML galley only (`proof_galley.xml`). Other files are only here for correction if needed.
 
 4) How to view the XML galley? To my knowledge, there is no open-source and easy-to-use tool, so the best way is to open it with a text editor. You will be able to view the galley before publishing on OJS. If you open it with a web browser, it will show something ugly (JATS XML differs from web XML).
@@ -53,18 +53,18 @@ For each table:
     4)  Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
 
 6) Proofread XML galley and add metadata if necessary. Some things to check by visual inspection of the XML galley:
-- Metadata, author names, credits, affiliations are here
-- Abstracts are here
-- Reference list is here
-- Every figure is here 
+    - Metadata, author names, credits, affiliations are here
+    - Abstracts are here
+    - Reference list is here
+    - Every figure is here 
 
 7) Upload the galley PDF and XML files to the OJS website. 
-- For the XML galley, images need to be uploaded separately (no need to fill in the caption etc.)
-- Don't forget the uploading order:
-    1) PDF galley
-    2) XML galley
-    3) Supplementary Materials (any)
-    4) Review reports
+    - For the XML galley, images need to be uploaded separately (no need to fill in the caption etc.)
+    - Don't forget the uploading order:
+        1) PDF galley
+        2) XML galley
+        3) Supplementary Materials (any)
+        4) Review reports
 
 ## TO DO
 - Don't use regex, because it is unstable with XML? Oops...
