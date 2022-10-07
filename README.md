@@ -21,7 +21,7 @@ Before running the TeX2JATS converter, you need to have produced:
 
 
 ## Workflow
-1) Copy tex2xml.sh, apa.csl, cleanidjats.py and metatex2jats.py to your current working directory (CWD, where the TeX galley is):
+1) Copy tex2xml.sh, apa.csl, cleanidjats.py and metatex2jats.py to your current working directory (CWD, where the TeX galley is):  
 `cd /cwd/`  
 `cp /path/to/tex2jats/tex2xml.sh ./`  
 `cp /path/to/tex2jats/\*.py ./`  
