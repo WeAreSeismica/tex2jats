@@ -24,7 +24,7 @@ Before running the TeX2JATS converter, you need to have produced:
 1) Copy tex2xml.sh, apa.csl, cleanidjats.py and metatex2jats.py to your current working directory (CWD, where the TeX galley is):  
 `cd /cwd/`  
 `cp /path/to/tex2jats/tex2xml.sh ./`  
-`cp /path/to/tex2jats/\*.py ./`  
+`cp /path/to/tex2jats/*.py ./`  
 `cp  /path/to/tex2jats/apa.csl ./`  
 
 2) In your CWD, use tex2xml.sh to convert the TeX to JATS XML:
