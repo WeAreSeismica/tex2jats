@@ -43,7 +43,7 @@ with:
     - `proof_tab1.xml`  
 You will then work with the XML galley only (`proof_galley.xml`). Other files are only here for correction if needed.
 
-4) How to view the XML galley? To my knowledge, there is no open-source and easy-to-use tool, so the best way is to open it with a text editor. You will be able to view the galley before publishing on OJS. If you open it with a web browser, it will show something ugly (JATS XML differs from web XML).
+4) How to view the XML galley? To my knowledge, there is no open-source and easy-to-use tool, so the best way is to open it with a text editor. You will be able to view the galley before publishing on OJS. If you open it with a web browser, it **should not show any error**. You can use the web browser to debug (will show the line of every error).
 
 5) If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.  
 For each table:  
@@ -58,7 +58,12 @@ For each table:
     - Reference list is here
     - Every figure is here 
 
-7) Upload the galley PDF and XML files to the OJS website. 
+7) Convert every figure to PNG format if not already done. You can use the following bash command (converts every PDF file which starts with fig to a PNG format, requires imagemagick, you can adjust density if needed):  
+`mogrify -verbose -quality 00 -density 250  -format png ./fig*.pdf`
+
+8) *Optional*. Check your galley on the Seismica test website. No need to upload the figures. If you can open the XML galley with a web browser without errors, it will load fine in OJS.   
+
+9) Upload the galley PDF and XML files to the OJS website. 
     - For the XML galley, images need to be uploaded separately (no need to fill in the caption etc.)
     - Don't forget the uploading order:
         1) PDF galley
