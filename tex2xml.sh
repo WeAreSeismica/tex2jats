@@ -33,7 +33,7 @@ perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml
 perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.xml
 
 # clean figures xref
-perl -i -00pe 's/(fig(?:.{0,1}|[a-z]{0,1}).{0,3}<xref )/$1ref-type="fig" /ig' $1_galley.xml
+perl -i -00pe 's/(fig(?:.{0,1}|[a-z]{0,1}).{0,3}<xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
 for VAR in {1..20}
 do
     perl -i -00pe "s/(fig(?:.{0,1}|[a-z]{0,1}.{0,3})(?:<xref .{10,50}<\/xref>(?s:.){1,10})$VAR<xref )/\1ref-type=\"fig\" /ig" $1_galley.xml
