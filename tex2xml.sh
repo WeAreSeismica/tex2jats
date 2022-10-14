@@ -43,6 +43,9 @@ done
 perl -i -00pe "s/mime-subtype=\"pdf\"/mime-subtype=\"png\"/ig" $1_galley.xml
 perl -i -00pe 's/xlink:href=\"([\S\n\t\v ]*?).pdf\"/xlink:href=\"$1.png\"/ig' $1_galley.xml
 
+perl -i -00pe "s/mime-subtype=\"\"/mime-subtype=\"png\"/ig" $1_galley.xml
+perl -i -00pe 's/xlink:href=\"(.*?)(\.pdf|\.png){0,1}\"/xlink:href=\"$1.png\"/ig' $1_galley.xml
+
 # clean tables xref
 perl -i -00pe 's/(tab(?:.{0,1}|[a-z]{0,1}).{0,3}<xref )/$1ref-type="table" /ig' $1_galley.xml
 for VAR in {1..20}
