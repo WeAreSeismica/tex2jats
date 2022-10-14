@@ -32,14 +32,14 @@ sed -e '/<front>/,/<\/front>/!b' -e "/<\/front>/!d;r $1_metadata.jats" -e 'd' $1
 perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml
 perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.xml
 
-# clean figures xref
+# clean xref
 # cleans first xref after a figure is referenced to
-perl -i -00pe 's/(fig(?:.{0,5}|[a-z]{0,1}).{0,3}<xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
+perl -i -00pe 's/(fig.{0,5} <xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
+# cleans first xref after a table is referenced to
+perl -i -00pe 's/(tab.{0,5} <xref )/$1ref-type="table" /ig' $1_galley.xml
+
 # cleans other xrefs after 1st one, iterating to find xref without ref-type
-for VAR in {1..10}
-do
-    perl -i -00pe 's/((?:<xref ref-type=\"fig\".{10,30}<\/xref>){1})(.{1,5})<xref alt(.{10,50}<\/xref>)/$1$2<xref ref-type=\"fig\" alt$3/ig' $1_galley.xml
-done
+python3 cleanxrefjats.py $1_galley
 
 # clean/add figures extensions if not already there
 perl -i -00pe "s/mime-subtype=\"pdf\"/mime-subtype=\"png\"/ig" $1_galley.xml
@@ -48,14 +48,9 @@ perl -i -00pe 's/xlink:href=\"([\S\n\t\v ]*?).pdf\"/xlink:href=\"$1.png\"/ig' $1
 perl -i -00pe "s/mime-subtype=\"\"/mime-subtype=\"png\"/ig" $1_galley.xml
 perl -i -00pe 's/xlink:href=\"(.*?)(\.pdf|\.png){0,1}\"/xlink:href=\"$1.png\"/ig' $1_galley.xml
 
-# clean tables xref
-# cleans first xref after a table is referenced to
-perl -i -00pe 's/(tab(?:.{0,5}|[a-z]{0,1}).{0,3}<xref )/$1ref-type="table" /ig' $1_galley.xml
-# cleans other xrefs after 1st one, iterating to find xref without ref-type
+# cleans table ids
 for VAR in {1..20}
 do
-    perl -i -00pe 's/((?:<xref ref-type=\"table\".{10,30}<\/xref>){1})(.{1,5})<xref alt(.{10,50}<\/xref>)/$1$2<xref ref-type=\"table\" alt$3/ig' $1_galley.xml
-    # cleans table ids
     perl -i -00pe "s/\[tbl$VAR\]/$VAR/ig" $1_galley.xml
 done
 
