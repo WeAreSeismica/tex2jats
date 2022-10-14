@@ -18,35 +18,40 @@ def tex2jats(texname):
         
     strings = ["title",           
                "publisheddate",
-               "author\[([0-50]{1})\]",
+               r"author\[ *([0-50]{1})((?: *, *[0-50]{1})*) *\]{ *(.*?) *(\n)",
                "orcid",
                "thanks",
-               "affil\[([0-50]{1})\]",
+               r"affil\[([0-50]{1})\]",
                "credit",
                "dois",
-               "editorname",
-               "copyedname",
-               "prodname"]
+               "prodedname",
+               "handedname",
+               "copyedname"]
     
     meta = []
     for stri in strings:
-        pattern = re.compile(stri+r'{(.*?)}')
         if 'author' in stri:
-            pattern = re.compile(stri+r'{(.*?)(\n)')
-        if 'credit' in stri:
+            pattern = re.compile(stri)
+        elif 'credit' in stri:
             pattern = re.compile(stri+r'{(.*?)}'+r'{(.*?)}')
-        match = re.findall(pattern, tex)
-        meta.append(match)
+        elif 'thanks' in stri:
+            pattern = re.compile(r'(author\[[\S\n\t\v ]*?\][\S\n\t\v ]*?)thanks{(.*?)}')
+        else:
+            pattern = re.compile(stri+r'{(.*?)}')
+        match0 = re.findall(pattern, tex)
+        meta.append(match0)
     
     title = meta[0][0]
     doi = meta[7][0]
     pmid = ''
     publisherid = ''
     
-    editor_givenname = meta[8][0].split(' ')[0]
-    editor_surname = meta[8][0].split(' ')[1]
-    copyed_givenname = meta[9][0].split(' ')[0]
-    copyed_surname = meta[9][0].split(' ')[1]
+    prod_editor_givenname = meta[8][0].split(' ')[0]
+    prod_editor_surname = meta[8][0].split(' ')[1]
+    hand_editor_givenname = meta[9][0].split(' ')[0]
+    hand_editor_surname = meta[9][0].split(' ')[1]
+    copyed_givenname = meta[10][0].split(' ')[0]
+    copyed_surname = meta[10][0].split(' ')[1]
     
     formats = ["%B %d, %Y", "%B %d %Y", "%d %B %Y", "%b %d %Y", "%m/%d/%Y", "%m %d %Y"]
     dd = meta[1][0]
@@ -58,18 +63,73 @@ def tex2jats(texname):
             year = datetime.strptime(dd, format).strftime("%Y")
         except ValueError:
             pass
-    author = [meta[2][i][1] for i in range(len(meta[2]))]
-    surname = [name.split(' ')[1] for name in author]
-    givenname = [name.split(' ')[0] for name in author]
+    author = [meta[2][i][-2] for i in range(len(meta[2]))]
+    surname = [name.split(' ')[-1] for name in author]
+    givenname = [name.split(' ')[0:-1] for name in author]
+    givenname = [' '.join(givenname[i]) for i in range(len(givenname))]
     orcid = meta[3]
     
-    affil = []
+    ## AFFILIATIONS
+    ## note: the OJS JATS reader is not working well, the only thing it reads is the role. 
+    ## Hence all affiliations are parsed as a role, but it's bad JATS
+    ## there are two other solutions below that are commented
+    
+    ## sol1,  get text affils, not needed anymore but keep it just in case
+    # firstaffil = []
+    # for i in [meta[2][j][0] for j in range(len(meta[2]))]:
+    #     for k in range(len(meta[5])):
+    #         if meta[5][k][0] == i:
+    #             firstaffil.append(meta[5][k][1])
+    
+    # otheraffil = []
+    # for affs in [meta[2][j][1] for j in range(len(meta[2]))]:
+    #     affs = affs.replace(' ','').split(',')
+    #     otheraff = []
+    #     for i in affs:
+    #         if len(i) > 0:
+    #             for k in range(len(meta[5])):
+    #                 if meta[5][k][0] == i:
+    #                     otheraff.append(meta[5][k][1])    
+    #     otheraffil.append(otheraff)
+    
+    # # sol2, get affil numbers, not working with OJS
+    # affil = []
+    # for i in range(len(meta[2])):
+    #     affs = []
+    #     affs.append(meta[2][i][0])
+    #     otheraff = meta[2][i][1].replace(' ','').split(',')
+    #     for j in otheraff:
+    #         if len(j) > 0:
+    #             affs.append(j)
+    #     affil.append(affs)
+        
+    # affil_id = [' '.join(affil[i]) for i in range(len(affil))]
+    # affil_sup = [','.join(affil[i]) for i in range(len(affil))]
+    
+    # affil_address = meta[5]
+    
+    # sol3, get affil as roles
+    firstaffil = []
     for i in [meta[2][j][0] for j in range(len(meta[2]))]:
         for k in range(len(meta[5])):
             if meta[5][k][0] == i:
-                affil.append(meta[5][k][1])
+                firstaffil.append(meta[5][k][1])
     
-    corres = meta[4]
+    otheraffil = []
+    for affs in [meta[2][j][1] for j in range(len(meta[2]))]:
+        affs = affs.replace(' ','').split(',')
+        otheraff = []
+        for i in affs:
+            if len(i) > 0:
+                for k in range(len(meta[5])):
+                    if meta[5][k][0] == i:
+                        otheraff.append(meta[5][k][1])    
+        otheraffil.append(otheraff)
+    otheraffil = [', '.join(otheraffil[i]) for i in range(len(otheraffil))]
+        
+    # get corresponding author
+    corres = meta[4][0][1]
+    corres_id = len(re.findall('author', meta[4][0][0]))
     
     outname = texname+'_metadata.jats'
     with open(outname, 'w') as fi:
@@ -97,19 +157,55 @@ def tex2jats(texname):
         fi.write('<article-id pub-id-type="doi">{}</article-id>\n'.format(doi))
         fi.write('<article-id pub-id-type="pmid">{}</article-id>\n'.format(pmid))
         
+        fi.write('''<permissions>                
+<copyright-statement>Copyright &#169; {}, {} et al.  
+This is an Open Access article distributed under the terms of the Creative Commons Attribution 4.0 International License, allowing third parties to copy and redistribute the material in any medium or format and to remix, transform, and build upon the material for any purpose, even commercially, provided the original work is properly cited and states its license.
+</copyright-statement>
+</permissions>'''.format(year, author[0]))
+        
         fi.write('<contrib-group>\n')
+        
+        ## SOL 2 for afiliations, not working with OJS
+#         for i in range(len(author)):
+#             if i == corres_id-1:
+#                 fi.write('''<contrib contrib-type="author">
+# <contrib-id contrib-id-type="orcid">{}</contrib-id>
+# <name name-style="western">
+# <surname>{}</surname>
+# <given-names>{}</given-names>
+# </name>
+# <xref ref-type="aff" rid="{}"><sup>{}</sup></xref>
+# <email>{}</email>
+# </contrib>
+# '''.format(orcid[i], surname[i], givenname[i], affil_id[i], affil_sup[i], corres.split(' ')[-1]))
+#             else:
+#                 fi.write('''<contrib contrib-type="author">
+# <contrib-id contrib-id-type="orcid">{}</contrib-id>
+# <name name-style="western">
+# <surname>{}</surname>
+# <given-names>{}</given-names>
+# </name>
+# <xref ref-type="aff" rid="{}"><sup>{}</sup></xref>
+# </contrib>
+# '''.format(orcid[i], surname[i], givenname[i], affil_id[i], affil_sup[i]))
+
+#         for i in range(len(affil_address)):
+#             fi.write('''<aff id="{}"><label>{}</label>{} </aff>
+# '''.format(affil_address[i][0], affil_address[i][0], affil_address[i][1]))
+        
+        ## SOL 3 for affiliations, all parsed to ROLES, working OK with OJS
         for i in range(len(author)):
-            if i == 0:
+            if i == corres_id-1:
                 fi.write('''<contrib contrib-type="author">
 <contrib-id contrib-id-type="orcid">{}</contrib-id>
 <name name-style="western">
 <surname>{}</surname>
 <given-names>{}</given-names>
 </name>
-<aff>{}</aff>
-<email>{}</email>
+<role> {}Correspondence to: <email>{}</email>
+</role>
 </contrib>
-'''.format(orcid[i], surname[i], givenname[i], affil[i], corres[0].split(' ')[-1]))
+'''.format(orcid[i], surname[i], givenname[i], firstaffil[i]+', '+otheraffil[i], corres.split(' ')[-1]))
             else:
                 fi.write('''<contrib contrib-type="author">
 <contrib-id contrib-id-type="orcid">{}</contrib-id>
@@ -117,25 +213,36 @@ def tex2jats(texname):
 <surname>{}</surname>
 <given-names>{}</given-names>
 </name>
-<aff>{}</aff>
+<role> {}
+</role>
 </contrib>
-'''.format(orcid[i], surname[i], givenname[i], affil[i]))
-        
+'''.format(orcid[i], surname[i], givenname[i],firstaffil[i]+', '+otheraffil[i]))
+
+        ## Editors        
         fi.write('''<contrib contrib-type="editor">
 <name name-style="western">
 <surname>{}</surname>
 <given-names>{}</given-names>
 </name>
-<role>Editor</role>
+<role>Handling Editor</role>
 </contrib>
-'''.format(editor_surname,editor_givenname))
+'''.format(hand_editor_surname,hand_editor_givenname))
+
+        fi.write('''<contrib contrib-type="editor">
+<name name-style="western">
+<surname>{}</surname>
+<given-names>{}</given-names>
+</name>
+<role>Production Editor</role>
+</contrib>
+'''.format(prod_editor_surname,prod_editor_givenname))
     
         fi.write('''<contrib contrib-type="editor">
 <name name-style="western">
 <surname>{}</surname>
 <given-names>{}</given-names>
 </name>
-<role>Copy-Editing, Typesetting</role>
+<role>Copy-Editing, Typesetting, Layout Editing</role>
 </contrib>
 '''.format(copyed_surname,copyed_givenname))
     
