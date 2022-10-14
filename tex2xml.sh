@@ -33,10 +33,10 @@ perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml
 perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.xml
 
 # clean figures xref
-perl -i -00pe 's/(fig(?:.{0,1}|[a-z]{0,1}).{0,3}<xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
-for VAR in {1..20}
+perl -i -00pe 's/(fig(?:.{0,5}|[a-z]{0,1}).{0,3}<xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
+for VAR in {1..10}
 do
-    perl -i -00pe "s/(fig(?:.{0,1}|[a-z]{0,1}.{0,3})(?:<xref .{10,50}<\/xref>(?s:.){1,10})$VAR<xref )/\1ref-type=\"fig\" /ig" $1_galley.xml
+    perl -i -00pe 's/((?:<xref ref-type=\"fig\".{10,30}<\/xref>){1})(.{1,5})<xref alt(.{10,50}<\/xref>)/$1$2<xref ref-type=\"fig\" alt$3/ig' $1_galley.xml
 done
 
 # clean/add figures extensions if not already there
@@ -47,10 +47,10 @@ perl -i -00pe "s/mime-subtype=\"\"/mime-subtype=\"png\"/ig" $1_galley.xml
 perl -i -00pe 's/xlink:href=\"(.*?)(\.pdf|\.png){0,1}\"/xlink:href=\"$1.png\"/ig' $1_galley.xml
 
 # clean tables xref
-perl -i -00pe 's/(tab(?:.{0,1}|[a-z]{0,1}).{0,3}<xref )/$1ref-type="table" /ig' $1_galley.xml
+perl -i -00pe 's/(tab(?:.{0,5}|[a-z]{0,1}).{0,3}<xref )/$1ref-type="table" /ig' $1_galley.xml
 for VAR in {1..20}
 do
-    perl -i -00pe "s/(tab(?:.{0,1}|[a-z]{0,1}.{0,3})(?:<xref .{10,50}<\/xref>(?s:.){1,10})$VAR<xref )/\1ref-type=\"table\" /ig" $1_galley.xml
+    perl -i -00pe 's/((?:<xref ref-type=\"table\".{10,30}<\/xref>){1})(.{1,5})<xref alt(.{10,50}<\/xref>)/$1$2<xref ref-type=\"table\" alt$3/ig' $1_galley.xml
     perl -i -00pe "s/\[tbl$VAR\]/$VAR/ig" $1_galley.xml
 done
 
