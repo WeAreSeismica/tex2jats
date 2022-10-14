@@ -284,7 +284,12 @@ This is an Open Access article distributed under the terms of the Creative Commo
             pattern = re.compile(stri+r'{(.*?)}')
             match = re.findall(pattern, table)
             tab_meta.append(match)
-        label = codepoints(tab_meta[0][0])
+        try:
+            label = codepoints(tab_meta[0][0])
+        except:
+            print('Table #{} does not have a label!'.format(i+1))
+            print('label assigned: tab{}'.format(i+1))
+            label = 'tab'+str(i+1)
         caption = tab_meta[1][0]
         # match main tex
         textab = re.findall(r'(?s).begin{(?:tabular|seistable)}(.*?)end{(?:tabular|seistable)}', table)

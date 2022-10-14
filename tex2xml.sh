@@ -34,9 +34,9 @@ perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.x
 
 # clean xref
 # cleans first xref after a figure is referenced to
-perl -i -00pe 's/(fig.{0,5} <xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
+perl -i -00pe 's/(fig[\S\d\n\t ]{0,9}<xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
 # cleans first xref after a table is referenced to
-perl -i -00pe 's/(tab.{0,5} <xref )/$1ref-type="table" /ig' $1_galley.xml
+perl -i -00pe 's/(tab[\S\d\n\t ]{0,9}<xref )/$1ref-type="table" /ig' $1_galley.xml
 
 # cleans other xrefs after 1st one, iterating to find xref without ref-type
 python3 cleanxrefjats.py $1_galley

@@ -46,6 +46,7 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 4) How to view the XML galley? To my knowledge, there is no open-source and easy-to-use tool, so the best way is to open it with a text editor. You will be able to view the galley before publishing on OJS. If you open it with a web browser, it **should not show any error**. You can use the web browser to debug (will show the line of every error).
 
 5) If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.  
+**If there are equations or math expressions in your table, tex2xml *might* not behave correctly. I would suggest removing them before running the scrip.**
 For each table:  
     1)  Correct any unwanted symbol in `tabxx.tex`
     2)  Translate the `tabxx.tex` to HTML with https://tableconvert.com/latex-to-html
@@ -72,4 +73,5 @@ For each table:
         4) Review reports
 
 ## TO DO
-- Don't use regex, because it is unstable with XML? Oops...
+- Don't use regex, because it is unstable with XML? Oops…
+- Correctly parse math expressions within tables
