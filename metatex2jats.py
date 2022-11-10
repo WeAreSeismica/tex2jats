@@ -139,7 +139,7 @@ def tex2jats(texname):
 <journal-title-group>
 <journal-title>Seismica</journal-title>
 </journal-title-group>
-<issn></issn>
+<issn>2816-9387</issn>
 <publisher>
 <publisher-name></publisher-name>
 </publisher>
