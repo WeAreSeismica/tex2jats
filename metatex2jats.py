@@ -55,6 +55,7 @@ def tex2jats(texname):
     
     formats = ["%B %d, %Y", "%B %d %Y", "%d %B %Y", "%b %d %Y", "%m/%d/%Y", "%m %d %Y"]
     dd = meta[1][0]
+    date, year = None, None
     for format in formats:
         try:
             date = datetime.strptime(dd, format).strftime("%Y-%m-%d")
@@ -149,19 +150,20 @@ def tex2jats(texname):
         fi.write('''<title-group>
 <article-title>{}</article-title>
 </title-group>'''.format(title))
-        fi.write('''<pub-date publication-format="print" date-type="pub" iso-8601-date="{}">
-<day>{}</day><month>{}</month><year>{}</year>
-</pub-date>
-'''.format(date, day, month, year))
+        if date is not None:
+            fi.write('''<pub-date publication-format="print" date-type="pub" iso-8601-date="{}">
+                <day>{}</day><month>{}</month><year>{}</year>
+                </pub-date>
+                '''.format(date, day, month, year))
         fi.write('<article-id pub-id-type="publisher-id">{}</article-id>\n'.format(publisherid))
         fi.write('<article-id pub-id-type="doi">{}</article-id>\n'.format(doi))
         fi.write('<article-id pub-id-type="pmid">{}</article-id>\n'.format(pmid))
-        
-        fi.write('''<permissions>                
-<copyright-statement>Copyright &#169; {}, {} et al.  
-This is an Open Access article distributed under the terms of the Creative Commons Attribution 4.0 International License, allowing third parties to copy and redistribute the material in any medium or format and to remix, transform, and build upon the material for any purpose, even commercially, provided the original work is properly cited and states its license.
-</copyright-statement>
-</permissions>'''.format(year, author[0]))
+        if year is not None:
+            fi.write('''<permissions>                
+                <copyright-statement>Copyright &#169; {}, {} et al.  
+                This is an Open Access article distributed under the terms of the Creative Commons Attribution 4.0 International License, allowing third parties to copy and redistribute the material in any medium or format and to remix, transform, and build upon the material for any purpose, even commercially, provided the original work is properly cited and states its license.
+                </copyright-statement>
+                </permissions>'''.format(year, author[0]))
         
         fi.write('<contrib-group>\n')
         
@@ -286,11 +288,12 @@ This is an Open Access article distributed under the terms of the Creative Commo
             tab_meta.append(match)
         try:
             label = codepoints(tab_meta[0][0])
+            caption = tab_meta[1][0]
         except:
             print('Table #{} does not have a label!'.format(i+1))
             print('label assigned: tab{}'.format(i+1))
             label = 'tab'+str(i+1)
-        caption = tab_meta[1][0]
+            caption = ""
         # match main tex
         textab = re.findall(r'(?s).begin{(?:tabular|seistable)}(.*?)end{(?:tabular|seistable)}', table)
         main = textab[0]
