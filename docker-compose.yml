@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  xml-converter:
+    build: .
+    image: seismica/tex2jats
+    volumes:
+      - "${PWD}:/data"
+    env_file: env.set
+    
