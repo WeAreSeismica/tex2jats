@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  xml-converter:
+    build: .
+    image: seismica/tex2jats
+    volumes:
+      - "${PWD}:/data"
+    environment:
+      - LATEX_DIR=Seismica SCE - Rowe et al 2022
+      - TEX_FILENAME=main_sce
+      - BIB_FILENAME=seismica
