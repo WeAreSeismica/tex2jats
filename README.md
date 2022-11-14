@@ -6,7 +6,7 @@ There are two options to run the scripts. There's a docker-based setup that only
 Follow the steps in the following order - 
 1. [SCE Requirements](#sce-requirements)
 1. [Base Requirements](#base-requirements)
-1. Workflow [Docker Option](#workflow-option-1-using-docker) or [Dependencies Option](#workflow-option-2-installing-dependencies)
+1. Workflow [Docker Option](#workflow-option-1---using-docker) or [Dependencies Option](#workflow-option-2---installing-dependencies)
 1. [Post Conversion](#post-conversion)
 
 ## SCE Requirements
@@ -69,7 +69,7 @@ Other dependencies:
 - GNU sed, v4.8
 - perl, v>5 (below not tested)
 
-### Instructions
+### Option 2 Instructions
 1. Copy tex2xml.sh, apa.csl, cleanidjats.py and metatex2jats.py to your current working directory (CWD, where the TeX galley is):  
 `cd /cwd/`  
 `cp /path/to/tex2jats/tex2xml.sh ./`  
