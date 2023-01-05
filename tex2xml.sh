@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
  
 # $1: .tex file name, without extension
 # $2: .bib file name, without extension
