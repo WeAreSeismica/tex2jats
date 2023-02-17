@@ -49,7 +49,8 @@ perl -i -00pe "s/mime-subtype=\"\"/mime-subtype=\"png\"/ig" $1_galley.xml
 perl -i -00pe 's/xlink:href=\"(.*?)(\.pdf|\.png){0,1}\"/xlink:href=\"$1.png\"/ig' $1_galley.xml
 
 # cleans table ids
-for VAR in {1..20}
+table_max=20
+for VAR in `seq 1 $table_max`
 do
     perl -i -00pe "s/\[tbl$VAR\]/$VAR/ig" $1_galley.xml
 done
