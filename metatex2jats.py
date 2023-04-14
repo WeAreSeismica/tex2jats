@@ -47,12 +47,12 @@ def tex2jats(texname):
     pmid = ''
     publisherid = ''
     
-    prod_editor_givenname = meta[8][0].split(' ')[0]
-    prod_editor_surname = meta[8][0].split(' ')[1]
-    hand_editor_givenname = meta[9][0].split(' ')[0]
-    hand_editor_surname = meta[9][0].split(' ')[1]
-    copyed_givenname = meta[10][0].split(' ')[0]
-    copyed_surname = meta[10][0].split(' ')[1]
+    prod_editor_givenname = ' '.join(meta[8][0].split(' ')[:-1])
+    prod_editor_surname = meta[8][0].split(' ')[-1]
+    hand_editor_givenname = ' '.join(meta[9][0].split(' ')[:-1])
+    hand_editor_surname = meta[9][0].split(' ')[-1]
+    copyed_givenname = ' '.join(meta[10][0].split(' ')[:-1])
+    copyed_surname = meta[10][0].split(' ')[-1]
     try:
         translator_givenname = meta[11][0].split(' ')[0]
         translator_surname = meta[11][0].split(' ')[1]
