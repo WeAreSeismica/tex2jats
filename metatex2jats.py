@@ -26,7 +26,8 @@ def tex2jats(texname):
                "dois",
                "prodedname",
                "handedname",
-               "copyedname"]
+               "copyedname",
+               "translatorname"]
     
     meta = []
     for stri in strings:
@@ -52,6 +53,12 @@ def tex2jats(texname):
     hand_editor_surname = meta[9][0].split(' ')[-1]
     copyed_givenname = ' '.join(meta[10][0].split(' ')[:-1])
     copyed_surname = meta[10][0].split(' ')[-1]
+    try:
+        translator_givenname = meta[11][0].split(' ')[0]
+        translator_surname = meta[11][0].split(' ')[1]
+    except:
+        translator_givenname = None
+        translator_surname = None
     
     formats = ["%B %d, %Y", "%B %d %Y", "%d %B %Y", "%b %d %Y", "%m/%d/%Y", "%m %d %Y"]
     dd = meta[1][0]
@@ -247,6 +254,17 @@ def tex2jats(texname):
 <role>Copy-Editing, Typesetting, Layout Editing</role>
 </contrib>
 '''.format(copyed_surname,copyed_givenname))
+
+        if translator_givenname:
+            fi.write('''<contrib contrib-type="translator">
+<name name-style="western">
+<surname>{}</surname>
+<given-names>{}</given-names>
+</name>
+<role>Abstract translation</role>
+</contrib>
+'''.format(translator_surname,translator_givenname))
+
     
         fi.write('''</contrib-group>
 </article-meta>
