@@ -38,6 +38,8 @@ def tex2jats(texname):
             pattern = re.compile(stri+r'{(.*?)}'+r'{(.*?)}')
         elif 'thanks' in stri:
             pattern = re.compile(r'(author\[[\S\n\t\v ]*?\][\S\n\t\v ]*?)thanks{(.*?)}')
+        elif 'reviewername' in stri or 'translatorname' in stri:
+            pattern = re.compile(r'\n(.*?)'+stri+r'{(.*?)}')
         else:
             pattern = re.compile(stri+r'{(.*?)}')
         match0 = re.findall(pattern, tex)
@@ -54,18 +56,28 @@ def tex2jats(texname):
     hand_editor_surname = meta[9][0].split(' ')[-1]
     copyed_givenname = ' '.join(meta[10][0].split(' ')[:-1])
     copyed_surname = meta[10][0].split(' ')[-1]
-
+    
+    print(meta)
+    print(meta[11][0][1])
     try:
-        reviewers = meta[11][0].split('\\\\')
-        reviewer_givenname = [reviewers[i].split(' ')[0] for i in range(len(reviewers))]
-        reviewer_surname = [reviewers[i].split(' ')[-1] for i in range(len(reviewers))]
+        if '%' not in meta[11][0][0]:
+            reviewers = meta[11][0][1].split('\\\\')
+            reviewer_givenname = [reviewers[i].split(' ')[0] for i in range(len(reviewers))]
+            reviewer_surname = [reviewers[i].split(' ')[-1] for i in range(len(reviewers))]
+        else:
+            reviewer_givenname = None
+            reviewer_surname = None
     except:
         reviewer_givenname = None
         reviewer_surname = None
     try:
-        translators = meta[12][0].split('\\\\')
-        translator_givenname = [translators[i].split(' ')[0] for i in range(len(translators))]
-        translator_surname = [translators[i].split(' ')[-1] for i in range(len(translators))]
+        if '%' not in meta[12][0][0]:
+            translators = meta[12][0][1].split('\\\\')
+            translator_givenname = [translators[i].split(' ')[0] for i in range(len(translators))]
+            translator_surname = [translators[i].split(' ')[-1] for i in range(len(translators))]
+        else:
+            translator_givenname = None
+            translator_surname = None
     except:
         translator_givenname = None
         translator_surname = None
