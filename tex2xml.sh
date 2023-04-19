@@ -44,11 +44,10 @@ perl -i -00pe 's/(tab[\S\d\n\t ]{0,9}<xref )/$1ref-type="table" /ig' $1_galley.x
 python3 cleanxrefjats.py $1_galley
 
 # clean/add figures extensions if not already there
-perl -i -00pe "s/mime-subtype=\"pdf\"/mime-subtype=\"png\"/ig" $1_galley.xml
-perl -i -00pe 's/xlink:href=\"([\S\n\t\v ]*?).pdf\"/xlink:href=\"$1.png\"/ig' $1_galley.xml
-
-perl -i -00pe "s/mime-subtype=\"\"/mime-subtype=\"png\"/ig" $1_galley.xml
-perl -i -00pe 's/xlink:href=\"(.*?)(\.pdf|\.png){0,1}\"/xlink:href=\"$1.png\"/ig' $1_galley.xml
+perl -i -00pe 's/mime-subtype=\"\" xlink:href=\"(.*?)\.pdf\"/mime-subtype=\"pdf\" xlink:href=\"$1\.pdf\"/ig' $1_galley.xml
+perl -i -00pe 's/mime-subtype=\"\" xlink:href=\"(.*?)\.png\"/mime-subtype=\"png\" xlink:href=\"$1\.png\"/ig' $1_galley.xml
+perl -i -00pe 's/mime-subtype=\"\" xlink:href=\"(.*?)\.jpg\"/mime-subtype=\"jpg\" xlink:href=\"$1\.jpg\"/ig' $1_galley.xml
+perl -i -00pe 's/mime-subtype=\"(.*?)\" xlink:href=\"(.*?)(\.pdf|\.png|\.jpg){0,1}\"/mime-subtype=\"$1\" xlink:href=\"$2\.$1\"/ig' $1_galley.xml
 
 # cleans table ids
 table_max=20
