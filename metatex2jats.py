@@ -27,6 +27,7 @@ def tex2jats(texname):
                "prodedname",
                "handedname",
                "copyedname",
+               "reviewername",
                "translatorname"]
     
     meta = []
@@ -53,9 +54,18 @@ def tex2jats(texname):
     hand_editor_surname = meta[9][0].split(' ')[-1]
     copyed_givenname = ' '.join(meta[10][0].split(' ')[:-1])
     copyed_surname = meta[10][0].split(' ')[-1]
+
     try:
-        translator_givenname = meta[11][0].split(' ')[0]
-        translator_surname = meta[11][0].split(' ')[1]
+        reviewers = meta[11][0].split('\\\\')
+        reviewer_givenname = [reviewers[i].split(' ')[0] for i in range(len(reviewers))]
+        reviewer_surname = [reviewers[i].split(' ')[-1] for i in range(len(reviewers))]
+    except:
+        reviewer_givenname = None
+        reviewer_surname = None
+    try:
+        translators = meta[12][0].split('\\\\')
+        translator_givenname = [translators[i].split(' ')[0] for i in range(len(translators))]
+        translator_surname = [translators[i].split(' ')[-1] for i in range(len(translators))]
     except:
         translator_givenname = None
         translator_surname = None
@@ -254,16 +264,28 @@ def tex2jats(texname):
 <role>Copy-Editing, Typesetting, Layout Editing</role>
 </contrib>
 '''.format(copyed_surname,copyed_givenname))
-
+        
+        if reviewer_givenname:
+            for i in range(len(reviewer_givenname)):
+                fi.write('''<contrib contrib-type="reviewer">
+<name name-style="western">
+<surname>{}</surname>
+<given-names>{}</given-names>
+</name>
+<role>Reviewer</role>
+</contrib>
+'''.format(reviewer_surname[i],reviewer_givenname[i]))
+                
         if translator_givenname:
-            fi.write('''<contrib contrib-type="translator">
+            for i in range(len(translator_givenname)):
+                fi.write('''<contrib contrib-type="translator">
 <name name-style="western">
 <surname>{}</surname>
 <given-names>{}</given-names>
 </name>
 <role>Abstract translation</role>
 </contrib>
-'''.format(translator_surname,translator_givenname))
+'''.format(translator_surname[i],translator_givenname[i]))
 
     
         fi.write('''</contrib-group>
