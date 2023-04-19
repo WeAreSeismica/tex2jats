@@ -29,11 +29,11 @@ def cleanxref(xmlname):
     xml_new = xml
     for i in range(20):
         # for figures
-        regex = r"((?:<xref ref-type=\"fig\".{10,50}<\/xref>){1})([\S\d\n\t ]{1,5})<xref alt(.{10,50}<\/xref>)"
+        regex = r"((?:<xref ref-type=\"fig\".{10,50}<\/xref>){1})([\S\d\n\t ]{1,15})<xref alt(.{10,50}<\/xref>)"
         xml_new = re.sub(regex, fig_sub, xml_new, flags = re.IGNORECASE)
     
         # for figures
-        regex = r"((?:<xref ref-type=\"table\".{10,50}<\/xref>){1})([\S\d\n\t ]{1,5})<xref alt(.{10,50}<\/xref>)"
+        regex = r"((?:<xref ref-type=\"table\".{10,50}<\/xref>){1})([\S\d\n\t ]{1,15})<xref alt(.{10,50}<\/xref>)"
         xml_new = re.sub(regex, tab_sub, xml_new, flags = re.IGNORECASE)
 
     with open(xmlname+'.xml', 'w') as fi:
