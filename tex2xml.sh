@@ -33,9 +33,12 @@ python3 cleanidjats.py $1
 # replace jats xml file metadata
 sed -e '/<front>/,/<\/front>/!b' -e "/<\/front>/!d;r $1_metadata.jats" -e 'd' $1.xml > $1_galley.xml
 
-# clean multiple abstracts in final 1_galley
+# clean and format multiple abstracts in final 1_galley
 perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml
 perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.xml
+# make first word of abstract bold
+perl -i -00pe 's/<boxed-text>[\S\d\n\t ]*?<p>(Non-technical summary|\S*?) ([\S\d\n\t ]*?)<\/p>[\S\d\n\t ]*?<\/boxed-text>/<boxed-text><p>\n <bold>$1.<\/bold> $2\n<\/p><\/boxed-text>/gmi' $1_galley.xml
+
 
 # clean xref
 # cleans first xref after a figure is referenced to
