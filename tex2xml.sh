@@ -6,7 +6,7 @@
 # clean some stuff in the tex file before pandoc
 cp $1.tex $1_copy.tex
 sed -i 's/figure\*/figure/g' $1_copy.tex
-# sed -i 's/seistable\*/tabular/g' $1.tex
+# # sed -i 's/seistable\*/tabular/g' $1.tex
 sed -i 's/\makeseistitle{/\makeseistitle\n{%/g' $1_copy.tex
 
 # convert tex file to jats xml file
@@ -17,10 +17,12 @@ rm -rf $1_copy.tex
 # extract tex metadata to jats metadata
 python3 metatex2jats.py $1
 
-# clean math formulas
-perl -i -00pe 's/(<disp-formula>)[\S\n\t\v ]*?<alternatives>[\S\n\t\v ].*?(<tex-math)\>([\S\n\t\v ]*?)(\\label\{([\S\n\t\v ]*?)\}[\S\n\t\v ]*?<\/alternatives>)/$1$2 id="$5"\\>$3\]\]><\/tex-math>/rgmi' $1.xml
-
-perl -i -00pe 's/(<inline-formula>)[\S\n\t\v ]*?<alternatives>[\S\n\t\v ].*?(<tex-math)\>([\S\n\t\v ]*?)((<\/tex-math>)([\S\n\t\v ]*?)[\S\n\t\v ]*?<\/alternatives>)/$1$2\>$3$5/gmi' $1.xml
+# clean math formulas, several cases depending on the presence of labels
+perl -i -00pe 's/(<disp-formula>)[\S\n\t\v ]*?<alternatives>[\S\d\n\t ]*?(<tex-math>)[\S\n\t\v ]*?<!\[CDATA\[([\S\n\t\v ]*?)(\\label\{([\S\n\t\v ]*?)\})\]\]>[\S\n\t\v ]*?<\/tex-math>[\S\n\t\v ]*?<\/disp-formula>/<disp-formula id="$5"><label>$5<\/label>$2<![CDATA[$3]]><\/tex-math><\/disp-formula>/gmi' $1.xml
+perl -i -00pe 's/(<disp-formula>)[\S\n\t\v ]*?<alternatives>[\S\d\n\t ]*?(<tex-math>)[\S\n\t\v ]*?<!\[CDATA\[(\\label\{([\S\n\t\v ]*?)\})([\S\n\t\v ]*?)\]\]>[\S\n\t\v ]*?<\/tex-math>[\S\n\t\v ]*?<\/disp-formula>/<disp-formula id="$4"><label>$4<\/label>$2<![CDATA[$5]]><\/tex-math><\/disp-formula>/gmi' $1.xml
+perl -i -00pe 's/(<disp-formula>)[\S\n\t\v ]*?<alternatives>[\S\d\n\t ]*?(<tex-math>)[\S\n\t\v ]*?<!\[CDATA\[([\S\n\t\v ]*?)\]\]>[\S\n\t\v ]*?<\/tex-math>[\S\n\t\v ]*?<\/disp-formula>/<disp-formula id="">$2<![CDATA[$3]]><\/tex-math><\/disp-formula>/gmi' $1.xml
+# 
+perl -i -00pe 's/(<inline-formula>)[\S\n\t\v ]*?<alternatives>[\S\n\t\v ].*?(<tex-math)>([\S\n\t\v ]*?)((<\/tex-math>)([\S\n\t\v ]*?)[\S\n\t\v ]*?<\/alternatives>)/$1$2>$3$5/gmi' $1.xml
 
 # clean ids
 python3 cleanidjats.py $1
