@@ -9,7 +9,7 @@ import re
 
 def cleanid(xmlname):
         
-    special_characs = "\"#$%&*+/:;<=>?@[\]^`{|}~"
+    special_characs = "\"#$%&*+/:;<=>?@[\]^`{|}~_"
     special_characs2 = ["<",">","&"]
     xml_code2=['&#60;','&#62;','&#38;']
     
