@@ -57,8 +57,6 @@ def tex2jats(texname):
     copyed_givenname = ' '.join(meta[10][0].split(' ')[:-1])
     copyed_surname = meta[10][0].split(' ')[-1]
     
-    print(meta)
-    print(meta[11][0][1])
     try:
         if '%' not in meta[11][0][0]:
             reviewers = meta[11][0][1].split('\\\\')
