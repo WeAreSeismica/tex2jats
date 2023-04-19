@@ -49,6 +49,9 @@ perl -i -00pe 's/mime-subtype=\"\" xlink:href=\"(.*?)\.png\"/mime-subtype=\"png\
 perl -i -00pe 's/mime-subtype=\"\" xlink:href=\"(.*?)\.jpg\"/mime-subtype=\"jpg\" xlink:href=\"$1\.jpg\"/ig' $1_galley.xml
 perl -i -00pe 's/mime-subtype=\"(.*?)\" xlink:href=\"(.*?)(\.pdf|\.png|\.jpg){0,1}\"/mime-subtype=\"$1\" xlink:href=\"$2\.$1\"/ig' $1_galley.xml
 
+# clean figures extensions: XML does not read PDF
+perl -i -00pe 's/mime-subtype=\"pdf\" xlink:href=\"(.*?)\.pdf\"/mime-subtype=\"png\" xlink:href=\"$1\.png\"/ig' $1_galley.xml
+
 # cleans table ids
 table_max=20
 for VAR in `seq 1 $table_max`
