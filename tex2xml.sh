@@ -9,6 +9,9 @@ sed -i 's/figure\*/figure/g' $1_copy.tex
 # # sed -i 's/seistable\*/tabular/g' $1.tex
 sed -i 's/\makeseistitle{/\makeseistitle\n{%/g' $1_copy.tex
 
+# clean inline code
+perl -i -00pe 's/\\code\{(.*?)\}/\{$1\}/ig' $1_copy.tex
+
 # convert tex file to jats xml file
 pandoc $1_copy.tex -f latex -t jats+element_citations --citeproc --bibliography=$2.bib --mathjax --metadata link-citations=true --natbib --csl apa.csl -s -o $1.xml
 
@@ -64,7 +67,7 @@ sed -i 's/\\&/&amp;/g' $1_credits.jats
 
 # add credits as section in the galley file
 sed -n -i -e "/<\/body>/r $1_credits.jats" -e 1x -e '2,${x;p}' -e '${x;p}' $1_galley.xml
-
-
-#eof
-
+# 
+# 
+# #eof
+# 
