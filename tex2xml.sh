@@ -7,7 +7,8 @@
 cp $1.tex $1_copy.tex
 sed -i 's/figure\*/figure/g' $1_copy.tex
 # # sed -i 's/seistable\*/tabular/g' $1.tex
-sed -i 's/\makeseistitle{/\makeseistitle\n{%/g' $1_copy.tex
+sed -i 's/\\makeseistitle{/\\makeseistitle\n{%/g' $1_copy.tex
+sed -i 's/\\begin{acknowledgements}/\\begin{acknowledgements}Acknowledgements/g' $1_copy.tex
 
 # clean inline code
 perl -i -00pe 's/\\code\{(.*?)\}/\{$1\}/ig' $1_copy.tex
@@ -37,14 +38,14 @@ sed -e '/<front>/,/<\/front>/!b' -e "/<\/front>/!d;r $1_metadata.jats" -e 'd' $1
 perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml
 perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.xml
 # make first word of abstract bold
-perl -i -00pe 's/<boxed-text>[\S\d\n\t ]*?<p>(Non-technical summary|\S*?) ([\S\d\n\t ]*?)<\/p>[\S\d\n\t ]*?<\/boxed-text>/<boxed-text><p>\n <bold>$1.<\/bold> $2\n<\/p><\/boxed-text>/gmi' $1_galley.xml
+perl -i -00pe 's/<boxed-text>[\n\t ]*?<p>(Non-technical summary|\S{5,25}) ([\S\d\n\t ]*?)<\/p>[\n\t ]*?<\/boxed-text>/<boxed-text><p>\n <bold>$1.<\/bold> $2\n<\/p><\/boxed-text>/gmi' $1_galley.xml
 
 
 # clean xref
 # cleans first xref after a figure is referenced to
-perl -i -00pe 's/(fig[\S\d\n\t ]{0,9}<xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
+perl -i -00pe 's/(fig[\S\d\n\t ]{0,15}<xref )/$1ref-type=\"fig\" /ig' $1_galley.xml
 # cleans first xref after a table is referenced to
-perl -i -00pe 's/(tab[\S\d\n\t ]{0,9}<xref )/$1ref-type="table" /ig' $1_galley.xml
+perl -i -00pe 's/(tab[\S\d\n\t ]{0,15}<xref )/$1ref-type="table" /ig' $1_galley.xml
 
 # cleans other xrefs after 1st one, iterating to find xref without ref-type
 python3 cleanxrefjats.py $1_galley
@@ -71,7 +72,7 @@ sed -i 's/\\&/&amp;/g' $1_credits.jats
 
 # add credits as section in the galley file
 sed -n -i -e "/<\/body>/r $1_credits.jats" -e 1x -e '2,${x;p}' -e '${x;p}' $1_galley.xml
-# 
-# 
-# #eof
-# 
+
+
+#eof
+
