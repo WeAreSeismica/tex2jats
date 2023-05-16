@@ -1,13 +1,13 @@
 # TeX 2 JATS XML for Seismica
 
-# Introduction
+## Introduction
 There are two options to run the scripts. There's a docker-based setup that only requires installation of Docker and automatically manages all other dependencies. The other option is to install the dependencies and run the shell script that calls the python files to perform the conversions.
 
 Follow the steps in the following order - 
 1. [Base Requirements for installation](#base-requirements)
-2. [Pre-conversion Requirements](#sce-requirements)
+2. [Pre-conversion Requirements](#pre--conversion-requirements)
 3. Workflow [Docker Option](#workflow-option-1---using-docker) or [Dependencies Option](#workflow-option-2---installing-dependencies)
-4. [Post-conversion checks](#post-conversion)
+4. [Post-conversion checks](#post--conversion-checks)
 
 ## Base Requirements
 1. Clone the github repo to your local machine. `cd` into the desired directory and clone using - 
@@ -133,6 +133,6 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 - Maths formula in captions or tables are often not converted properly
 - Often in metadata, credits or acknowledgements: symbols are not properly converted, or are still escaped when they shouldn't: look for \\&, \\%,
 
-# TO DO
+## TO DO
 - Don't use regex, because it is unstable with XML? Oops…
 - Correctly parse math expressions within tables
