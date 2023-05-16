@@ -103,18 +103,20 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 4. Cross references for figures (xref) look OK. They should be printed with a format similar to:  
     `<xref ref-type="fig" alt="1" rid="fig1"&gt;1&lt;/xref>`
 
-4. If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.  
-**If the table is simple and has been converted properly by pandoc:**  
+5. Check the acknowledgements and references
+
+4. If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.
+
+**-> If the table is simple and has been converted properly by pandoc:**  
     - Copy the HTML header code in the XML table file `tabxx.xml`, where indicated
     - Replace the wrong table header in the XML galley `proof_galley.xml` with the header from `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement, that you can remove.  
-**If the table is too complex and has not been properly converted:**  
+    
+**-> If the table is too complex and has not been properly converted:**  
     - Correct any unwanted symbol in `tabxx.tex`
     - Translate the `tabxx.tex` to HTML with https://tableconvert.com/latex-to-html
     - Copy the HTML code  in the XML table file `tabxx.xml`, where indicated
     - Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.  
     
-5. Check the acknowledgements and references
-
 ### Final checks (with the OJS preview tool)
 
 1. Upload the XML galley to the OJS website. 
