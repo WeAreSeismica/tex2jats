@@ -31,10 +31,11 @@ perl -i -00pe 's/(<inline-formula>)[\S\n\t\v ]*?<alternatives>[\S\n\t\v ].*?(<te
 # clean ids
 python3 cleanidjats.py $1
 
-# replace jats xml file metadata
+# clean metadata and replace in jats xml file
+sed -i 's/\\&/&amp;/g' $1_metadata.jats
 sed -e '/<front>/,/<\/front>/!b' -e "/<\/front>/!d;r $1_metadata.jats" -e 'd' $1.xml > $1_galley.xml
 
-# clean and format multiple abstracts in final 1_galley
+# clean and format multiple abstracts in final galley
 perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml
 perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.xml
 # make first word of abstract bold
