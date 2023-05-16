@@ -6,9 +6,9 @@
 # clean some stuff in the tex file before pandoc
 cp $1.tex $1_copy.tex
 sed -i 's/figure\*/figure/g' $1_copy.tex
-# # sed -i 's/seistable\*/tabular/g' $1.tex
 sed -i 's/\\makeseistitle{/\\makeseistitle\n{%/g' $1_copy.tex
 sed -i 's/\\begin{acknowledgements}/\\begin{acknowledgements}Acknowledgements/g' $1_copy.tex
+sed -i '/^\\author\[/s/\~/ /g' $1_copy.tex
 
 # clean inline code
 perl -i -00pe 's/\\code\{(.*?)\}/\{$1\}/ig' $1_copy.tex
