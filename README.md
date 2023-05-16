@@ -108,14 +108,14 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 4. If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.
 
 **-> If the table is simple and has been converted properly by pandoc:**
-    - Copy the HTML header code in the XML table file `tabxx.xml`, where indicated
-    - Replace the wrong table header in the XML galley `proof_galley.xml` with the header from `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement, that you can remove.
+- Copy the HTML header code in the XML table file `tabxx.xml`, where indicated
+- Replace the wrong table header in the XML galley `proof_galley.xml` with the header from `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement, that you can remove.
     
 **-> If the table is too complex and has not been properly converted:**
-    - Correct any unwanted symbol in `tabxx.tex`
-    - Translate the `tabxx.tex` to HTML with https://tableconvert.com/latex-to-html
-    - Copy the HTML code  in the XML table file `tabxx.xml`, where indicated
-    - Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
+- Correct any unwanted symbol in `tabxx.tex`
+- Translate the `tabxx.tex` to HTML with https://tableconvert.com/latex-to-html
+- Copy the HTML code  in the XML table file `tabxx.xml`, where indicated
+- Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
     
 ### Final checks (with the OJS preview tool)
 
