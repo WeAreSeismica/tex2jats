@@ -18,7 +18,8 @@ Follow the steps in the following order -
 ## Pre-conversion requirements
 Before running the TeX2JATS converter, you need to:
 1. Have produced final `.tex` galleys with updated metadata (proof accepted by authors)
-2. Remove tilde (~) from authors name in `.tex` file, check that date format is correct (Month dd, YYYY)
+2. Check that date format is correct (Month dd, YYYY)
+3. Check that you did not use the obsolete command `seistable` in the tex file
 3. Convert every figure to PNG format if not already done. You can use the following bash command (converts every PDF file which starts with fig to a PNG format, requires imagemagick, you can adjust density if needed):  
 `mogrify -verbose -quality 00 -density 250  -format png ./fig*.pdf`
 
@@ -63,6 +64,7 @@ Before running the TeX2JATS converter, you need to:
 These ones are shared dependencies with the [docx/odt parsing for Seismica module](https://github.com/WeAreSeismica/seismica-sce):
 - python 3.n (preferably 3.8+)
 - numpy
+- beautifulsoup
 - pandoc
 
 Other dependencies:
@@ -71,7 +73,7 @@ Other dependencies:
 - perl, v>5 (below not tested)
 
 ### Option 2 Instructions
-1. Copy tex2xml.sh, apa.csl, cleanidjats.py and metatex2jats.py to your current working directory (CWD, where the TeX galley is):  
+1. Copy tex2xml.sh, apa.csl, and cleanjats.py to your current working directory (CWD, where the TeX galley is):  
 `cd /cwd/`  
 `cp /path/to/tex2jats/tex2xml.sh ./`  
 `cp /path/to/tex2jats/*.py ./`  
@@ -98,7 +100,7 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 
 1. Open the galley with a web browser, it **should not show any error**. You can use the web browser to debug (will show the line of every error).
 
-3. Correct metadata if needed: Authors' names, affiliations, DOI, title, and other metadata.
+3. Correct metadata if needed: Authors' names, affiliations, DOI, title, and other metadata. If multiple affiliations, there are often multiple points.
 
 4. Cross references for figures (xref) look OK. They should be printed with a format similar to:  
     `<xref ref-type="fig" alt="1" rid="fig1"&gt;1&lt;/xref>`
@@ -107,15 +109,15 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 
 4. If there are **TABLES** in your TeX galley, tex2xml.sh will export two files for each table: tabxx.tex and tabxx.xml, xx ranging from 1 to the total number of arrays present in the article.
 
-**-> If the table is simple and has been converted properly by pandoc:**
-- Copy the HTML header code in the XML table file `tabxx.xml`, where indicated
-- Replace the wrong table header in the XML galley `proof_galley.xml` with the header from `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement, that you can remove.
+**-> If the table is simple and has been converted properly by pandoc + cleanjats.py:**
+- Check and correct the caption of the table in the xml file for references or formula that have not been converted.
     
 **-> If the table is too complex and has not been properly converted:**
 - Correct any unwanted symbol in `tabxx.tex`
 - Translate the `tabxx.tex` to HTML with https://tableconvert.com/latex-to-html
 - Copy the HTML code  in the XML table file `tabxx.xml`, where indicated
-- Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `boxed-text` environnement.
+- Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `table-wrap` environnement.
+- Check and correct the caption of the table in the xml file for references or formula that have not been converted.
     
 ### Final checks (with the OJS preview tool)
 
@@ -130,9 +132,9 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 6. References (in the `References` tab) are printed correctly. *Note: there is a known issue with misc references that are not printed, we are working on that.*
 
 ### Known issues:
-- Maths formula in captions or tables are often not converted properly
-- Often in metadata, credits or acknowledgements: symbols are not properly converted, or are still escaped when they shouldn't: look for \\&, \\%,
+- References and maths formula in captions or tables are often not converted properly
+- Often in metadata, credits or acknowledgements: symbols are not properly converted, or are still escaped when they shouldn't: look for \\&, \\%, multiple occurences of dots and/or comma (`..`, `.,`).
 
 ## TO DO
-- Don't use regex, because it is unstable with XML? Oops…
-- Correctly parse math expressions within tables
+- Correctly parse math expressions and references within table captions
+- Correctly print misc references

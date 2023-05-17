@@ -9,19 +9,20 @@ import re
 from datetime import datetime
 import locale
 locale.setlocale(locale.LC_TIME, "en_US.UTF-8") 
+from bs4 import BeautifulSoup, CData
 
 
-def tex2jats(texname):
+def metatex2jats(texname):
     
     with open(texname+'.tex') as fi:
         tex = fi.read()
         
     strings = ["title",           
                "publisheddate",
-               r"author\[ *([0-50]{1})((?: *, *[0-50]{1})*) *\]{ *(.*?) *(\n)",
+               r"author\[ *([\d]{1,2})((?: *, *[\d]{1,2})*) *\]{ *(.*?) *(\n)",
                "orcid",
                "thanks",
-               r"affil\[([0-50]{1})\]",
+               r"affil\[([\d]{1,2})\]",
                "credit",
                "dois",
                "prodedname",
@@ -160,7 +161,7 @@ def tex2jats(texname):
     corres_id = len(re.findall('author', meta[4][0][0]))
     
     outname = texname+'_metadata.jats'
-    with open(outname, 'w') as fi:
+    with open(outname, "w", encoding='utf-8') as fi:
         fi.write('''<front>
 <journal-meta>
 <journal-id></journal-id>
@@ -231,7 +232,7 @@ def tex2jats(texname):
 <surname>{}</surname>
 <given-names>{}</given-names>
 </name>
-<role> {}Correspondence to: <email>{}</email>
+<role> {}. Correspondence to: <email>{}</email>
 </role>
 </contrib>
 '''.format(orcid[i], surname[i], givenname[i], firstaffil[i]+', '+otheraffil[i], corres.split(' ')[-1]))
@@ -309,44 +310,215 @@ def tex2jats(texname):
         credit = credit+meta[6][i][0]+': '+meta[6][i][1]+'. '
         
     credname = texname+'_credits.jats'
-    with open(credname, 'w') as fi:
+    with open(credname, "w", encoding='utf-8') as fi:
         fi.write('''<sec id="author-contributions">
 <title>Author contributions</title>
 <p>{}</p>
 </sec>
 '''.format(credit))
+    
+    return outname, credname
 
-    ## extract table
-    special_characs = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+def cleanid(xmlname):
+        
+    special_characs = "\"#$%&*+/;<=>?@[\]^`{|}~"
+    special_characs2 = ["<",">","&"]
+    xml_code2=['&#60;','&#62;','&#38;']
+    
     def codepoints(stri):
         out = ''
-        for c in stri:
+        for c in stri: 
             if c in special_characs:
                 out = out+'{:04X}'.format( ord(c) )
+            elif c ==':':
+                out = out+'U003A'
+            else:
+                out = out+c
+        return out
+    
+    def func(matchobj):
+        m =  matchobj.group(1)
+        out = 'id="'+codepoints(m)+'"'
+        return out
+    
+    with open(xmlname+'.xml', 'r') as fi:
+        xml = fi.read()
+    
+    xml_new = re.sub('id=\"(.*?)\"', func, xml, flags = re.M)
+        
+    with open(xmlname+'.xml', "w", encoding='utf-8') as fi:
+        xml = fi.write(xml_new)
+        
+    ## clean special characters
+    with open(xmlname+'.xml', 'r') as fi:
+        xml_new = fi.read()
+    
+    for i,c in enumerate(special_characs2):
+        try:
+            xml_new = re.sub(r' \{} '.format(c), ' {} '.format(xml_code2[i]), xml_new, flags = re.M)
+            xml_new = re.sub(r' {} '.format(c), ' {} '.format(xml_code2[i]), xml_new, flags = re.M)
+        except:
+            pass
+        
+    with open(xmlname+'.xml', "w", encoding='utf-8') as fi:
+        xml = fi.write(xml_new)
+        
+    return
+
+def cleanxrefjats(xmlname):
+        
+    with open(xmlname+'.xml') as fi:
+        xml = fi.read()
+      
+    soup = BeautifulSoup(xml, 'html.parser')
+    
+    # get figures labels (id)
+    labels = []
+    for index, p in enumerate(soup.find_all('fig')):
+       labels.append( p['id'] )
+    
+    # correct xrefs for figures labels (id)
+    ## Check for xref ids for xref whose ref-type is correct
+    for p in soup.find_all("xref", attrs={"ref-type": "fig"}):
+        alt = labels.index(p['rid']) +1
+        p['alt'] = str(alt)
+        p.string.replace_with(str(alt))
+        
+    ## Check for xref ids for xref whose ref-type is incorrect
+    for rid in labels:
+        for p in soup.find_all("xref", attrs={"rid": rid}):
+            alt = labels.index(p['rid']) +1
+            p['alt'] = str(alt)
+            p["ref-type"]= "fig"
+            p.string.replace_with(str(alt))        
+                
+    # correct graphic for png extension
+    for p in soup.find_all('graphic'):
+        p["mime-subtype"] = "png"
+        p["mimetype"]="image"
+        href = p["xlink:href"]
+        uphref = href.rsplit( ".", 1 )[0]+'.png'
+        p["xlink:href"] = uphref
+        
+    ## output to XML file
+    with open(xmlname+'.xml', "w", encoding='utf-8') as fi:
+        fi.write(str(soup))
+    
+    return
+
+def table2jats(texname):
+    xmlname = texname
+    
+    with open(texname+'.tex') as fi:
+        tex = fi.read()
+        
+    with open(xmlname+'.xml') as fi:
+        xml = fi.read()
+      
+    ### in TeX file
+    ## extract table 
+    special_characs = "\"#$%&*+/;<=>?@[\]^`{|}~"
+    def codepoints(stri):
+        out = ''
+        for c in stri: 
+            if c in special_characs:
+                out = out+'{:04X}'.format( ord(c) )
+            elif c ==':':
+                out = out+'U003A'
             else:
                 out = out+c
         return out
     
     table_list = re.findall(r'(?s).begin{table\*?}(.*?)end{table\*?}', tex)
-    pat = [r'\\label', r'\\caption']
+
+    pat = [r'\\label{(.*?)}', r'(?s)\\caption\{(.*?)\\label', r'((?<=caption\{).*$)']
+    labels = []
+    captions = []
     for i in range(len(table_list)):
         table = table_list[i]
-        tab_meta=[]
-        for stri in pat:
-            pattern = re.compile(stri+r'{(.*?)}')
-            match = re.findall(pattern, table)
-            tab_meta.append(match)
-        try:
-            label = codepoints(tab_meta[0][0])
-            caption = tab_meta[1][0]
-        except:
+        
+        # label
+        pattern = re.compile(pat[0])
+        match = re.findall(pattern, table)
+        if len(match) > 0:
+            label = codepoints(match[0])
+        else:
             print('Table #{} does not have a label!'.format(i+1))
             print('label assigned: tab{}'.format(i+1))
-            label = 'tab'+str(i+1)
-            caption = ""
+            label = 'tab'+str(i+1)   
+        labels.append(label)
+        
+        # caption
+        pattern = re.compile(pat[1])
+        match = re.findall(pattern, table)
+        if len(match) > 0:
+            caption = match[0].rsplit('}',1)[0].replace('\n','')
+        else:
+            pattern = re.compile(pat[2])
+            match = re.findall(pattern, table)
+            if len(match) > 0:
+                caption = match[0].rsplit('}',1)[0].replace('\n','')
+            else:
+                print('Table #{} does not have a caption!'.format(i+1))
+                caption = ''
+        captions.append(caption)
+            
         # match main tex
         textab = re.findall(r'(?s).begin{(?:tabular|seistable)}(.*?)end{(?:tabular|seistable)}', table)
         main = textab[0]
+        
+    ### correct references in caption
+    #for cap in captions:
+        #cap = re.sub(r' \{} '.format(c), ' {} '.format(xml_code2[i]), xml_new, flags = re.M)
+    
+    
+    ## in XML file
+    table_list_xml = re.findall(r'(<table-wrap>[\S\d\n\t ]*?<\/table-wrap>)', xml)
+    
+    # check same length as TeX table list
+    if len(table_list_xml) != len(table_list):
+        print('Error: the number of tables in the TeX and XML files is different')
+    
+    # replace metadata in XML file
+    soup = BeautifulSoup(xml, 'html.parser')
+    
+    boxed_txt = [x for x in soup.find_all("boxed-text") if x.find('table-wrap')]
+    for p in boxed_txt:
+        p.replaceWithChildren()
+        
+    for index, p in enumerate(soup.find_all('table-wrap')):
+        p['id'] = labels[index]
+        captag = soup.new_tag("caption")
+        pp = soup.new_tag("p")
+        captag.append(pp)
+        p.append(captag)
+        pp.string = captions[index]
+        
+    for index, p in enumerate(soup.find_all('table'), start=1):
+        p['frame'] = "box"
+        p['rules'] = "all"
+        p['cellpadding'] = "5"
+    
+    ## Check for xref ids for xref whose ref-type is correct
+    for p in soup.find_all("xref", attrs={"ref-type": "table"}):
+        alt = labels.index(p['rid']) +1
+        p['alt'] = str(alt)
+        p.string.replace_with(str(alt))
+        
+    ## Check for xref ids for xref whose ref-type is incorrect
+    for rid in labels:
+        for p in soup.find_all("xref", attrs={"rid": rid}):
+            alt = labels.index(p['rid']) +1
+            p['alt'] = str(alt)
+            p["ref-type"]= "table"
+            p.string.replace_with(str(alt))        
+                
+    ## output to XML file
+    with open(xmlname+'.xml', "w", encoding='utf-8') as fi:
+        fi.write(str(soup))
+
+    ## Output to separate files for use when table is too complex
+    for i in range(len(table_list)):
         # write to file
         tabname = texname+'_tab'+str(i+1)+'.xml'
         with open(tabname, 'w') as fi:
@@ -361,10 +533,10 @@ def tex2jats(texname):
 </tbody>
 </table>
 </table-wrap>
-    '''.format(label, caption, 'tab'+str(i+1)+'.tex'))
+    '''.format(labels[i], captions[i], 'tab'+str(i+1)+'.tex'))
     
         tabname = texname+'_tab'+str(i+1)+'.tex'
-                # correct for textbf, not perfect....
+        # correct for textbf, not perfect....
         regex = r"\\textbf\{(([^{}]*(\{(([^{}]*(\{[^{}]*\}[^{}]*)?)*)\}[^{}]*)?)*)\}"
         subst = "\\1"
         result = re.sub(regex, subst, main, 0, re.MULTILINE)
@@ -373,9 +545,85 @@ def tex2jats(texname):
         result = re.sub(regex, subst, result, 0, re.MULTILINE)
         with open(tabname, 'w') as fi:
             fi.write('{}'.format(result))
+            
+    return
+    
+def cleanmathjats(xmlname):
+        
+    with open(xmlname+'.xml') as fi:
+        xml = fi.read()
+      
+    soup = BeautifulSoup(xml, 'html.parser')
+    
+    # correct for inline formulas
+    for p in soup.find_all("inline-formula"):
+        newtag = p.find('alternatives').find('tex-math')
+        p.append( newtag )
+        p.alternatives.decompose()
+        
+    # correct for formulas
+    label_number = 1
+    ids = []
+    for p in soup.find_all("disp-formula"):
+        newtag = p.find('alternatives').find('tex-math')
+        
+        if 'label' in str(newtag):
+            regex = r"(\\label\{(\S*?)\})"
+            label = re.findall(regex, str(newtag) )[0][1]
+            p["id"] = label
+            ids.append(label)
+            
+            labeltag = soup.new_tag("label")
+            p.append(labeltag)
+            labeltag.string = str(label_number)
+            label_number += 1
+            
+            p.append( newtag )        
+            p.alternatives.decompose()
+        else:
+            p.append( newtag )
+            p.alternatives.decompose()
+    
+    # correct Xrefs
+    for rid in ids:
+        for p in soup.find_all("xref", attrs={"rid": rid}):
+            alt = ids.index(p['rid']) +1
+            p['alt'] = str(alt)
+            p["ref-type"]= "disp-formula"
+            p.string.replace_with(str(alt))   
+    
+    ## output to XML file
+    with open(xmlname+'.xml', "w", encoding='utf-8') as fi:
+        fi.write(str(soup))
+        
+    # remove label from CDATA
+    with open(xmlname+'.xml', 'r') as fi:
+        xml = fi.read()
+        
+    regex = r"\<tex-math>[\S\n\t\v ]{,20}\<!\[CDATA\[([\S\n\t\v ]{,200})\\label\{([\S]*?)\}[\S\n\t\v ]{,20}\]\]\>[\S\n\t\v ]{,20}\<\/tex-math>"
+    xml_new = re.sub(regex, r"<tex-math><![CDATA[\1]]></tex-math>", xml)
+    
+    with open(xmlname+'.xml', "w", encoding='utf-8') as fi:
+        xml = fi.write(xml_new)
+    
+    return
 
 if __name__ == '__main__':
     
-    tex2jats(sys.argv[1])
+    texname = sys.argv[1]
     
+    # extract tex metadata to jats metadata
+    # output texname_metadata.jats
+    metaname, creditname = metatex2jats(texname)
+    
+    # clean ids from characters that do not print correctly
+    cleanid(texname)
+    
+    # cleans xrefs and figures extension
+    cleanxrefjats(texname)
 
+    # include tables in XML file, clean xrefs
+    table2jats(texname)
+    
+    # clean formulas
+    cleanmathjats(texname)
