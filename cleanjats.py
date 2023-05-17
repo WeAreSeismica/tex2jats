@@ -9,7 +9,7 @@ import re
 from datetime import datetime
 import locale
 locale.setlocale(locale.LC_TIME, "en_US.UTF-8") 
-from bs4 import BeautifulSoup, CData
+from bs4 import BeautifulSoup, CData, NavigableString
 
 
 def metatex2jats(texname):
@@ -169,7 +169,7 @@ def metatex2jats(texname):
     corres = meta[4][0][1]
     corres_id = len(re.findall('author', meta[4][0][0]))
     
-    outname = texname+'_metadata.jats'
+    outname = texname+'_metadata.xml'
     with open(outname, "w", encoding='utf-8') as fi:
         fi.write('''<front>
 <journal-meta>
@@ -318,7 +318,7 @@ def metatex2jats(texname):
     for i in range(len(meta[6])):
         credit = credit+meta[6][i][0]+': '+meta[6][i][1]+'. '
         
-    credname = texname+'_credits.jats'
+    credname = texname+'_credits.xml'
     with open(credname, "w", encoding='utf-8') as fi:
         fi.write('''<sec id="author-contributions">
 <title>Author contributions</title>
@@ -617,12 +617,74 @@ def cleanmathjats(xmlname):
     
     return
 
+
+def cleanbibentries(bibname, xmlname):
+        
+    with open(bibname+'.xml') as fi:
+        xml = fi.read()
+      
+    soup = BeautifulSoup(xml, 'xml')
+    
+    for p in soup.find_all('ref'):
+        src = p.find('source')
+    
+    for p in soup.find_all('element-citation', attrs={'publication-type':"article-journal"}):
+        if p.find("pub-id") is None:
+            uri = p.find('uri')
+            source = p.find('source')
+            if uri is not None and source is not None:
+                source.insert(1, NavigableString(". Available from: "+uri.text+" Year") )
+            elif uri is not None and source is None:
+                newtag = soup.new_tag("source")
+                #newtag.append(uri)
+                p.append(newtag)
+                newtag.insert(1, NavigableString("Available from: "+uri.text+" Year") )
+            elif uri is None and source is not None:
+                pass
+            else:
+                print('\n There might be information missing for this bibliography entry:')
+                print(p)
+        
+    for p in soup.find_all('element-citation', attrs={'publication-type':None}):
+        p['publication-type'] = "article-journal"
+        #p['publication-format'] = "web"
+        
+        uri = p.find('uri')
+        doi = p.find('pub-id')
+        source = p.find('source')
+        
+        if source is None:
+            if uri is not None and doi is None:  
+                newtag = soup.new_tag("source")
+                #newtag.append(uri)
+                p.append(newtag)
+                newtag.insert(0, NavigableString("Available from: "+uri.text+" Year"))   
+                
+                #newtag = soup.new_tag("pub-id")
+                #newtag["pub-id-type"]="url"
+                #p.append(newtag)
+                #newtag.insert(0, NavigableString(uri.text) )  
+                
+            elif uri is None and doi is None:
+                print('There might be information missing for this bibliography entry:')
+                print(p)
+        else:
+            if uri is not None:
+                source.insert(1, NavigableString(". Available from: "+uri.text+" Year") )
+    
+    ## output to XML file
+    with open(bibname+'.xml', "w", encoding='utf-8') as fi:
+        fi.write(str(soup))
+        
+    return
+
 if __name__ == '__main__':
     
     texname = sys.argv[1]
     
     # extract tex metadata to jats metadata
     # output texname_metadata.jats
+    # extract list of references because BeautifulSoup messes up with it
     metaname, creditname = metatex2jats(texname)
     
     # clean ids from characters that do not print correctly
@@ -636,3 +698,7 @@ if __name__ == '__main__':
     
     # clean formulas
     cleanmathjats(texname)
+    
+    # clean misc bib entries + include list of refs
+    cleanbibentries('bib', texname)
+    

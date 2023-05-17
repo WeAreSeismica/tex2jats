@@ -16,19 +16,26 @@ perl -i -00pe 's/\\code\{(.*?)\}/\{$1\}/ig' $1_copy.tex
 
 # convert tex file to jats xml file
 pandoc $1_copy.tex -f latex -t jats+element_citations --citeproc --bibliography=$2.bib --mathjax --metadata link-citations=true --natbib --csl apa.csl -s -o $1.xml
-
 rm -rf $1_copy.tex
+
+# extract references for separate cleaning (requires different XML parser)
+sed -n '/\<back\>/,/\<\/back\>/p' $1.xml > bib.xml
 
 # clean stuff
 python3 cleanjats.py $1
 
+# replace bib in the xml file
+sed -i -n '/\<back\>/,/\<\/back\>/p' bib.xml
+sed -i -e '/\<back\>/,/\<\/back\>/!b' -e "/<\/article>/!d;r bib.xml" -e 'd' $1.xml
+echo "</article>" >> $1.xml
+
 # clean metadata and replace in the xml file
-sed -i 's/\\&/&amp;/g' $1_metadata.jats
-sed -e '/<front>/,/<\/front>/!b' -e "/<\/front>/!d;r $1_metadata.jats" -e 'd' $1.xml > $1_galley.xml
+sed -i 's/\\&/&amp;/g' $1_metadata.xml
+sed -e '/<front>/,/<\/front>/!b' -e "/<\/front>/!d;r $1_metadata.xml" -e 'd' $1.xml > $1_galley.xml
 
 # clean credits file and add as section in the xml file
-sed -i 's/\\&/&amp;/g' $1_credits.jats
-sed -n -i -e "/<\/body>/r $1_credits.jats" -e 1x -e '2,${x;p}' -e '${x;p}' $1_galley.xml
+sed -i 's/\\&/&amp;/g' $1_credits.xml
+sed -n -i -e "/<\/body>/r $1_credits.xml" -e 1x -e '2,${x;p}' -e '${x;p}' $1_galley.xml
 
 # clean and format multiple abstracts in final galley
 perl -i -00pe 's/<boxed-text>\n\s*<boxed-text>/<boxed-text>/g' $1_galley.xml

@@ -129,7 +129,7 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 3. Cross references to figures and tables and references are OK
 4. Tables are printed correctly
 5. Acknowledgements are printed correctly
-6. References (in the `References` tab) are printed correctly. *Note: there is a known issue with misc references that are not printed, we are working on that.*
+6. References (in the `References` tab) are printed correctly.
 
 ### Known issues:
 - References and maths formula in table captions are often not converted properly
@@ -137,4 +137,3 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 
 ## TO DO
 - Correctly parse math expressions and references within table captions
-- Correctly print misc references
