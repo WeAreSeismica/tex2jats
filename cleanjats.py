@@ -40,7 +40,7 @@ def metatex2jats(texname):
         elif 'thanks' in stri:
             pattern = re.compile(r'(author\[[\S\n\t\v ]*?\][\S\n\t\v ]*?)thanks{(.*?)}')
         elif 'reviewername' in stri or 'translatorname' in stri:
-            pattern = re.compile(r'\n(.*?)'+stri+r'{(.*?)}')
+            pattern = re.compile(r'(.*?)'+stri+r'{(.*?)}')
         else:
             pattern = re.compile(stri+r'{(.*?)}')
         match0 = re.findall(pattern, tex)
@@ -60,9 +60,18 @@ def metatex2jats(texname):
     
     try:
         if '%' not in meta[11][0][0]:
-            reviewers = meta[11][0][1].split('\\\\')
-            reviewer_givenname = [reviewers[i].split(' ')[0] for i in range(len(reviewers))]
-            reviewer_surname = [reviewers[i].split(' ')[-1] for i in range(len(reviewers))]
+            reviewers = meta[11][0][1].split('\\\\')            
+            if len([e for e in reviewers if ',' in e]) >=1:
+                reviewers = [revs.split(',') for revs in reviewers]
+                reviewer_givenname = [reviewers[0][i].split(' ')[0] for i in range(len(reviewers))]
+                reviewer_surname = [reviewers[0][i].split(' ')[-1] for i in range(len(reviewers))]
+            elif len([e for e in reviewers if 'and' in e]) >=1:
+                reviewers = [revs.split('and') for revs in reviewers]
+                reviewer_givenname = [reviewers[0][i].split(' ')[0] for i in range(len(reviewers))]
+                reviewer_surname = [reviewers[0][i].split(' ')[-1] for i in range(len(reviewers))]
+            else:
+                reviewer_givenname = [reviewers[i].split(' ')[0] for i in range(len(reviewers))]
+                reviewer_surname = [reviewers[i].split(' ')[-1] for i in range(len(reviewers))]
         else:
             reviewer_givenname = None
             reviewer_surname = None

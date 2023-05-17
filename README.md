@@ -116,7 +116,7 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 - Correct any unwanted symbol in `tabxx.tex`
 - Translate the `tabxx.tex` to HTML with https://tableconvert.com/latex-to-html
 - Copy the HTML code  in the XML table file `tabxx.xml`, where indicated
-- Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `table-wrap` environnement.
+- Replace the wrong table code in the XML galley `proof_galley.xml` with the updated `tabxx.xml`. In the XML galley, tables are under a `table-wrap` environment.
 - Check and correct the caption of the table in the xml file for references or formula that have not been converted.
     
 ### Final checks (with the OJS preview tool)
@@ -132,8 +132,8 @@ You will then work with the XML galley only (`proof_galley.xml`). Other files ar
 6. References (in the `References` tab) are printed correctly. *Note: there is a known issue with misc references that are not printed, we are working on that.*
 
 ### Known issues:
-- References and maths formula in captions or tables are often not converted properly
-- Often in metadata, credits or acknowledgements: symbols are not properly converted, or are still escaped when they shouldn't: look for \\&, \\%, multiple occurences of dots and/or comma (`..`, `.,`).
+- References and maths formula in table captions are often not converted properly
+- Often in metadata, credits or acknowledgements: symbols are not properly converted, or are still escaped when they shouldn't: look for \\&, \\%, multiple occurrences of dots and/or comma (`..`, `.,`).
 
 ## TO DO
 - Correctly parse math expressions and references within table captions
