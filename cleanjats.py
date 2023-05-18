@@ -98,9 +98,13 @@ def metatex2jats(texname):
         except ValueError:
             pass
     author = [meta[2][i][-2] for i in range(len(meta[2]))]
-    surname = [name.split(' ')[-1] for name in author]
-    givenname = [name.split(' ')[0:-1] for name in author]
-    givenname = [' '.join(givenname[i]) for i in range(len(givenname))]
+    
+    surname = []
+    givenname = []
+    for auth in author:
+        names = re.split(r' |~', auth)
+        surname.append(names[0])
+        givenname.append( ' '.join(names[1:]) )
     orcid = meta[3]
     
     ## AFFILIATIONS
