@@ -102,9 +102,10 @@ def metatex2jats(texname):
     surname = []
     givenname = []
     for auth in author:
-        names = re.split(r' |~', auth)
-        surname.append(names[0])
-        givenname.append( ' '.join(names[1:]) )
+        names = re.split(r' |~|}', auth)
+        names = [x for x in names if x]
+        surname.append(names[-1])
+        givenname.append( ' '.join(names[0:-1]) )
     orcid = meta[3]
     
     ## AFFILIATIONS
@@ -615,7 +616,9 @@ def cleanmathjats(xmlname):
             
             labeltag = soup.new_tag("label")
             p.append(labeltag)
-            labeltag.string = str(label_number)
+            sc = soup.new_tag("sub")
+            labeltag.append(sc)
+            sc.string = "Equation ("+str(label_number)+")"
             label_number += 1
             
             p.append( newtag )        
