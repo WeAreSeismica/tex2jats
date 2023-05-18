@@ -60,18 +60,14 @@ def metatex2jats(texname):
     
     try:
         if '%' not in meta[11][0][0]:
-            reviewers = meta[11][0][1].split('\\\\')            
-            if len([e for e in reviewers if ',' in e]) >=1:
-                reviewers = [revs.split(',') for revs in reviewers]
-                reviewer_givenname = [reviewers[0][i].split(' ')[0] for i in range(len(reviewers))]
-                reviewer_surname = [reviewers[0][i].split(' ')[-1] for i in range(len(reviewers))]
-            elif len([e for e in reviewers if 'and' in e]) >=1:
-                reviewers = [revs.split('and') for revs in reviewers]
-                reviewer_givenname = [reviewers[0][i].split(' ')[0] for i in range(len(reviewers))]
-                reviewer_surname = [reviewers[0][i].split(' ')[-1] for i in range(len(reviewers))]
-            else:
-                reviewer_givenname = [reviewers[i].split(' ')[0] for i in range(len(reviewers))]
-                reviewer_surname = [reviewers[i].split(' ')[-1] for i in range(len(reviewers))]
+            revs = re.split(r'\\|and|,', meta[11][0][1])
+            reviewers = [x for x in revs if x]
+            reviewer_givenname = []
+            reviewer_surname = []
+            for rev in reviewers:
+                nospace = [ x for x in rev.split(' ') if x]
+                reviewer_givenname.append(nospace[0])
+                reviewer_surname.append(nospace[1])
         else:
             reviewer_givenname = None
             reviewer_surname = None
@@ -166,8 +162,12 @@ def metatex2jats(texname):
     otheraffil = [', '.join(otheraffil[i]) for i in range(len(otheraffil))]
         
     # get corresponding author
-    corres = meta[4][0][1]
-    corres_id = len(re.findall('author', meta[4][0][0]))
+    try:
+        corres = meta[4][0][1]
+        corres_id = len(re.findall('author', meta[4][0][0]))
+    except:
+        print('\nNo corresponding author found!')
+        corres_id = 0
     
     outname = texname+'_metadata.xml'
     with open(outname, "w", encoding='utf-8') as fi:
@@ -233,30 +233,57 @@ def metatex2jats(texname):
 # '''.format(affil_address[i][0], affil_address[i][0], affil_address[i][1]))
         
         ## SOL 3 for affiliations, all parsed to ROLES, working OK with OJS
-        for i in range(len(author)):
-            if i == corres_id-1:
-                fi.write('''<contrib contrib-type="author">
-<contrib-id contrib-id-type="orcid">{}</contrib-id>
-<name name-style="western">
-<surname>{}</surname>
-<given-names>{}</given-names>
-</name>
-<role> {}. Correspondence to: <email>{}</email>
-</role>
-</contrib>
-'''.format(orcid[i], surname[i], givenname[i], firstaffil[i]+', '+otheraffil[i], corres.split(' ')[-1]))
-            else:
-                fi.write('''<contrib contrib-type="author">
-<contrib-id contrib-id-type="orcid">{}</contrib-id>
-<name name-style="western">
-<surname>{}</surname>
-<given-names>{}</given-names>
-</name>
-<role> {}
-</role>
-</contrib>
-'''.format(orcid[i], surname[i], givenname[i],firstaffil[i]+', '+otheraffil[i]))
-
+        if len(orcid) == len(surname):
+            for i in range(len(author)):
+                if i == corres_id-1:
+                    fi.write('''<contrib contrib-type="author">
+    <contrib-id contrib-id-type="orcid">{}</contrib-id>
+    <name name-style="western">
+    <surname>{}</surname>
+    <given-names>{}</given-names>
+    </name>
+    <role> {}. Correspondence to: <email>{}</email>
+    </role>
+    </contrib>
+    '''.format(orcid[i], surname[i], givenname[i], firstaffil[i]+', '+otheraffil[i], corres.split(' ')[-1]))
+                else:
+                    fi.write('''<contrib contrib-type="author">
+    <contrib-id contrib-id-type="orcid">{}</contrib-id>
+    <name name-style="western">
+    <surname>{}</surname>
+    <given-names>{}</given-names>
+    </name>
+    <role> {}
+    </role>
+    </contrib>
+    '''.format(orcid[i], surname[i], givenname[i],firstaffil[i]+', '+otheraffil[i]))
+        else:
+            print('\nOrcid macro for all authors not provided -> empty ORCIDs.')
+            for i in range(len(author)):
+                if i == corres_id-1:
+                    fi.write('''<contrib contrib-type="author">
+    <contrib-id contrib-id-type="orcid">{}</contrib-id>
+    <name name-style="western">
+    <surname>{}</surname>
+    <given-names>{}</given-names>
+    </name>
+    <role> {}. Correspondence to: <email>{}</email>
+    </role>
+    </contrib>
+    '''.format('', surname[i], givenname[i], firstaffil[i]+', '+otheraffil[i], corres.split(' ')[-1]))
+                else:
+                    fi.write('''<contrib contrib-type="author">
+    <contrib-id contrib-id-type="orcid">{}</contrib-id>
+    <name name-style="western">
+    <surname>{}</surname>
+    <given-names>{}</given-names>
+    </name>
+    <role> {}
+    </role>
+    </contrib>
+    '''.format('', surname[i], givenname[i],firstaffil[i]+', '+otheraffil[i]))
+                    
+                    
         ## Editors        
         fi.write('''<contrib contrib-type="editor">
 <name name-style="western">
@@ -482,12 +509,12 @@ def table2jats(texname):
     
     
     ## in XML file
-    table_list_xml = re.findall(r'(<table-wrap>[\S\d\n\t ]*?<\/table-wrap>)', xml)
-    
+    table_list_xml = re.findall(r'(<table-wrap>)', xml)
+        
     # check same length as TeX table list
     if len(table_list_xml) != len(table_list):
         print('Error: the number of tables in the TeX and XML files is different')
-    
+
     # replace metadata in XML file
     soup = BeautifulSoup(xml, 'html.parser')
     

@@ -43,6 +43,11 @@ perl -i -00pe 's/<\/boxed-text>\n\s*<\/boxed-text>/<\/boxed-text>/g' $1_galley.x
 # make first word of abstract bold
 perl -i -00pe 's/<boxed-text>[\n\t ]*?<p>(Non-technical summary|\S{5,25}) ([\S\d\n\t ]*?)<\/p>[\n\t ]*?<\/boxed-text>/<boxed-text><p>\n <bold>$1.<\/bold> $2\n<\/p><\/boxed-text>/gmi' $1_galley.xml
 
+# clean all working files
+rm -rf $1_metadata.xml
+rm -rf $1_credits.xml
+rm -rf $1.xml
+rm -rf bib.xml
 
 #eof
 
