@@ -17,9 +17,6 @@ perl -i -00pe 's/\\code\{(.*?)\}/\{$1\}/ig' $1_copy.tex
 pandoc $1_copy.tex -f latex -t jats+element_citations --citeproc --bibliography=$2.bib --mathjax --metadata link-citations=true --natbib --csl apa.csl -s -o $1.xml
 rm -rf $1_copy.tex
 
-# extract references for separate cleaning (requires different XML parser)
-sed -n '/\<back\>/,/\<\/back\>/p' $1.xml > bib.xml
-
 # clean stuff
 python3 cleanjats.py $1
 

@@ -12,6 +12,25 @@ locale.setlocale(locale.LC_TIME, "en_US.UTF-8")
 from bs4 import BeautifulSoup, CData, NavigableString
 
 
+
+
+def sepbib(texname):
+    xmlname = texname
+    
+
+    outname = 'bib.xml'
+    with open(outname, "w", encoding='utf-8') as fout:
+        fout.write('<back>\n')
+        with open(xmlname+'.xml') as fi:
+            for line in iter(fi.readline, '<back>\n'):
+                pass
+            for line in iter(fi.readline, '</back>\n'):
+                fout.write(str(line))
+        fout.write('</back>\n')
+        
+    return
+        
+        
 def metatex2jats(texname):
     
     with open(texname+'.tex') as fi:
@@ -518,7 +537,10 @@ def table2jats(texname):
         
     # check same length as TeX table list
     if len(table_list_xml) != len(table_list):
-        print('Error: the number of tables in the TeX and XML files is different')
+        table_list_xml = re.findall(r'(<table-wrap id=)', xml)
+        
+        if len(table_list_xml) != len(table_list):
+           print('Error: the number of tables in the TeX and XML files is different')
 
     # replace metadata in XML file
     soup = BeautifulSoup(xml, 'html.parser')
@@ -716,10 +738,14 @@ if __name__ == '__main__':
     
     texname = sys.argv[1]
     
+    # extract references for separate cleaning (requires different XML parser)
+    #sed -n '/\<back\>/,/\<\/back\>/p' $1.xml > bib.xml
+    sepbib(texname)
+    
     # extract tex metadata to jats metadata
     # output texname_metadata.jats
     # extract list of references because BeautifulSoup messes up with it
-    metaname, creditname = metatex2jats(texname)
+    metatex2jats(texname)
     
     # clean ids from characters that do not print correctly
     cleanid(texname)
