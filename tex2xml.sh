@@ -21,9 +21,8 @@ rm -rf $1_copy.tex
 python3 cleanjats.py $1
 
 # replace bib in the xml file
-sed -i -n '/\<back\>/,/\<\/back\>/p' bib.xml
-sed -i -e '/\<back\>/,/\<\/back\>/!b' -e "/<\/article>/!d;r bib.xml" -e 'd' $1.xml
-echo "</article>" >> $1.xml
+sed -i -n '/<back>/,/<\/back>/p' bib.xml
+sed -i -e '/<back>/,/<\/back>/!b' -e "/<\/back>/!d;r bib.xml" -e 'd' $1.xml
 
 # clean metadata and replace in the xml file
 sed -i 's/\\&/&amp;/g' $1_metadata.xml
