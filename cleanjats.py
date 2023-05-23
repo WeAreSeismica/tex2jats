@@ -463,7 +463,7 @@ def cleanxrefjats(xmlname):
     # Pandoc parse them correctly but Lens doesn't read fn-group
     fnlabels = {}
     for p in soup.find_all("fn"):
-        fnlabels[p["id"]] = p.text[2:]
+        fnlabels[p["id"]] = p.text.strip()
     
     for p in soup.find_all("xref", attrs={"ref-type": "fn"}):
         if 'Corresponding' not in fnlabels[p["rid"]]:
