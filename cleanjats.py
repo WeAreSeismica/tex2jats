@@ -459,6 +459,20 @@ def cleanxrefjats(xmlname):
         uphref = href.rsplit( ".", 1 )[0]+'.png'
         p["xlink:href"] = uphref
         
+    # correct footnotes
+    # Pandoc parse them correctly but Lens doesn't read fn-group
+    fnlabels = {}
+    for p in soup.find_all("fn"):
+        fnlabels[p["id"]] = p.text[2:]
+    
+    for p in soup.find_all("xref", attrs={"ref-type": "fn"}):
+        if 'Corresponding' not in fnlabels[p["rid"]]:
+            p.string = ''
+            italic = soup.new_tag('italic')
+            italic.string = ' (note: '+fnlabels[p["rid"]]+')'
+            p.insert_after(italic)
+            p.unwrap()
+        
     ## output to XML file
     with open(xmlname+'.xml', "w", encoding='utf-8') as fi:
         fi.write(str(soup))
