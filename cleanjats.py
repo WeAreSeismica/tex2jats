@@ -10,8 +10,7 @@ from datetime import datetime
 import locale
 locale.setlocale(locale.LC_TIME, "en_US.UTF-8") 
 from bs4 import BeautifulSoup, CData, NavigableString
-
-
+from pathlib import Path
 
 
 def sepbib(texname):
@@ -584,9 +583,11 @@ def table2jats(texname):
         fi.write(str(soup))
 
     ## Output to separate files for use when table is too complex
+    Path("tables").mkdir(parents=True, exist_ok=True)
+
     for i in range(len(table_list)):
         # write to file
-        tabname = texname+'_tab'+str(i+1)+'.xml'
+        tabname = 'tables/' + texname+'_tab'+str(i+1)+'.xml'
         with open(tabname, 'w') as fi:
             fi.write('''<table-wrap id="{}">
 <caption>
@@ -601,7 +602,7 @@ def table2jats(texname):
 </table-wrap>
     '''.format(labels[i], captions[i], 'tab'+str(i+1)+'.tex'))
     
-        tabname = texname+'_tab'+str(i+1)+'.tex'
+        tabname = 'tables/'+texname+'_tab'+str(i+1)+'.tex'
         # correct for textbf, not perfect....
         regex = r"\\textbf\{(([^{}]*(\{(([^{}]*(\{[^{}]*\}[^{}]*)?)*)\}[^{}]*)?)*)\}"
         subst = "\\1"
