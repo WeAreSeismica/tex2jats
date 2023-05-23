@@ -551,11 +551,14 @@ def table2jats(texname):
         
     for index, p in enumerate(soup.find_all('table-wrap')):
         p['id'] = labels[index]
-        captag = soup.new_tag("caption")
-        pp = soup.new_tag("p")
-        captag.append(pp)
-        p.append(captag)
-        pp.string = captions[index]
+        
+        captagg = p.find('caption')
+        if not captagg:
+            captag = soup.new_tag("caption")
+            pp = soup.new_tag("p")
+            captag.append(pp)
+            p.append(captag)
+            pp.string = captions[index]
         
     for index, p in enumerate(soup.find_all('table'), start=1):
         p['frame'] = "box"
