@@ -11,8 +11,6 @@ COPY ./docker_entrypoint.sh /tmp/docker_entrypoint.sh
 
 COPY ./tex2xml.sh /tmp/
 COPY ./apa.csl /tmp/
-COPY ./cleanidjats.py /tmp/
-COPY ./cleanxrefjats.py /tmp/
-COPY ./metatex2jats.py /tmp/
+COPY ./cleanjats.py /tmp/
 
 ENTRYPOINT ["sh", "/tmp/docker_entrypoint.sh"]
