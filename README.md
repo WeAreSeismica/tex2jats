@@ -64,7 +64,7 @@ Before running the TeX2JATS converter, you need to:
 These ones are shared dependencies with the [docx/odt parsing for Seismica module](https://github.com/WeAreSeismica/seismica-sce):
 - python 3.n (preferably 3.8+)
 - numpy
-- beautifulsoup
+- beautifulsoup (+ lmxl parser on MacOS)
 - pandoc
 
 Other dependencies:
