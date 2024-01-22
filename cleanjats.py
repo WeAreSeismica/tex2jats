@@ -15,8 +15,6 @@ from pathlib import Path
 
 def sepbib(texname):
     xmlname = texname
-    
-
     outname = 'bib.xml'
     with open(outname, "w", encoding='utf-8') as fout:
         fout.write('<back>\n')
@@ -629,7 +627,7 @@ def table2jats(texname):
             
     return
     
-def cleanmathjats(xmlname):
+def cleanmathjats(xmlname, mathmode):
         
     with open(xmlname+'.xml') as fi:
         xml = fi.read()
@@ -647,6 +645,7 @@ def cleanmathjats(xmlname):
     ids = []
     for p in soup.find_all("disp-formula"):
         newtag = p.find('alternatives').find('tex-math')
+        mmltag = p.find('alternatives').find('mml:math')
         
         if 'label' in str(newtag):
             regex = r"(\\label\{(\S*?)\})"
@@ -661,10 +660,14 @@ def cleanmathjats(xmlname):
             sc.string = "Equation ("+str(label_number)+")"
             label_number += 1
             
-            p.append( newtag )        
+            p.append( newtag )  
+            if 'false' not in mathmode:
+                p.append( mmltag)
             p.alternatives.decompose()
         else:
             p.append( newtag )
+            if 'false' not in mathmode:
+                p.append( mmltag)
             p.alternatives.decompose()
     
     # correct Xrefs
@@ -755,6 +758,7 @@ def cleanbibentries(bibname, xmlname):
 if __name__ == '__main__':
     
     texname = sys.argv[1]
+    mathmode = sys.argv[2]
     
     # extract references for separate cleaning (requires different XML parser)
     #sed -n '/\<back\>/,/\<\/back\>/p' $1.xml > bib.xml
@@ -775,7 +779,7 @@ if __name__ == '__main__':
     table2jats(texname)
     
     # clean formulas
-    cleanmathjats(texname)
+    cleanmathjats(texname, mathmode)
     
     # clean misc bib entries + include list of refs
     cleanbibentries('bib', texname)

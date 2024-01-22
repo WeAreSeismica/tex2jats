@@ -1,6 +1,9 @@
 #!/bin/sh
 # $1: .tex file name, without extension
 # $2: .bib file name, without extension
+# $3: math mode or not
+# Math mode True or False, default False
+math=${3:-false}
 # Clean some stuff in the tex file before pandoc
 cp $1.tex $1_copy.tex
 sed -i.bak 's/figure\*/figure/g' $1_copy.tex
@@ -16,7 +19,7 @@ rm -rf $1_copy.tex
 rm -rf $1_copy.tex.bak
 # Clean stuff
 # Execute the Python script to clean the generated .xml file
-python3 cleanjats.py $1
+python3 cleanjats.py $1 $math
 # Extract and replace the bibliography section in the generated .xml file with contents from 'bib.xml'
 sed -i.bak -n '/<back>/,/<\/back>/p' bib.xml
 sed -i.bak -e '/<back>/,/<\/back>/!b' -e "/<\/back>/!d;r bib.xml" -e 'd' "$1.xml"

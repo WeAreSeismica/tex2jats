@@ -80,10 +80,11 @@ Other dependencies:
 `cp  /path/to/tex2jats/apa.csl ./`  
 
 1. In your CWD, use tex2xml.sh to convert the TeX to JATS XML:  
-`./tex2xml.sh proof biblio`  
+`./tex2xml.sh proof biblio` or `./tex2xml.sh proof biblio math` for the math mode  
 with:  
     - `proof`, the name of the TeX galley without the extension (which should be .tex)
     - `biblio`, the name of the corrected list of references, without the extension (which should be .bib)
+    - `math`, to activate the math mode (to use if math does not print correctly, especially if amsmath TeX package is in use)
 
 ## Post conversion checks
 
