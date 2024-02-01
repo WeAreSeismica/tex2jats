@@ -31,9 +31,14 @@ def sepbib(texname):
 def metatex2jats(texname):
     
     with open(texname+'.tex') as fi:
-        tex = fi.read()
-        
-    strings = ["title",           
+        tex_rd = fi.read()
+    
+    # remove all commented lines
+    tex_woc = re.sub(r'^\%.*\n?', '', tex_rd, flags=re.MULTILINE)
+    tex = tex_woc
+    
+    # parse
+    strings = ['title',           
                "publisheddate",
                r"author\[ *([\d]{1,2})((?: *, *[\d]{1,2})*) *\]{ *(.*?) *(\n)",
                "orcid",
@@ -57,8 +62,10 @@ def metatex2jats(texname):
             pattern = re.compile(r'(author\[[\S\n\t\v ]*?\][\S\n\t\v ]*?)thanks{(.*?)}')
         elif 'reviewername' in stri or 'translatorname' in stri:
             pattern = re.compile(r'(.*?)'+stri+r'{(.*?)}')
+        elif 'title' in stri:
+            pattern = re.compile(r"\\title{([\S\d\n\t ]*?)}")
         else:
-            pattern = re.compile(stri+r'{(.*?)}')
+            pattern = re.compile(stri+r'{([\S\d\n\t ]*?)}')
         match0 = re.findall(pattern, tex)
         meta.append(match0)
     
