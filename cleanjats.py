@@ -658,7 +658,7 @@ def cleanmathjats(xmlname, mathmode):
             regex = r"(\\label\{(\S*?)\})"
             label = re.findall(regex, str(newtag) )[0][1]
             p["id"] = label
-            ids.append(label)
+            ids.append(re.sub(r':',r'U003A',label))
             
             labeltag = soup.new_tag("label")
             p.append(labeltag)
