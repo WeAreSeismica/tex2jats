@@ -66,6 +66,7 @@ These ones are shared dependencies with the [docx/odt parsing for Seismica modul
 - numpy
 - beautifulsoup (+ lmxl parser on MacOS)
 - pandoc
+- [biblib](https://github.com/WeAreSeismica/biblib)
 
 Other dependencies:
 - python3 datetime (often already installed)
