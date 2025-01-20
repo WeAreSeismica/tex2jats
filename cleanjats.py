@@ -385,7 +385,7 @@ def metatex2jats(texname):
 
 def cleanid(xmlname):
         
-    special_characs = "\"#$%&*+/;<=>?@[\]^`{|}~"
+    special_characs = "\"#$%&*+/;<=>?@[\\]^`{|}~"
     special_characs2 = ["<",">","&"]
     xml_code2=['&#60;','&#62;','&#38;']
     
@@ -495,7 +495,7 @@ def table2jats(texname):
       
     ### in TeX file
     ## extract table 
-    special_characs = "\"#$%&*+/;<=>?@[\]^`{|}~"
+    special_characs = "\"#$%&*+/;<=>?@[\\]^`{|}~"
     def codepoints(stri):
         out = ''
         for c in stri: 
@@ -625,10 +625,10 @@ def table2jats(texname):
         # correct for textbf, not perfect....
         regex = r"\\textbf\{(([^{}]*(\{(([^{}]*(\{[^{}]*\}[^{}]*)?)*)\}[^{}]*)?)*)\}"
         subst = "\\1"
-        result = re.sub(regex, subst, main, 0, re.MULTILINE)
+        result = re.sub(regex, subst, main, count=0, flags=re.MULTILINE)
         regex = r"[ ]{1,}|[\t]{1,}|[ \t]{1,}"
         subst = " "
-        result = re.sub(regex, subst, result, 0, re.MULTILINE)
+        result = re.sub(regex, subst, result, count=0, flags=re.MULTILINE)
         with open(tabname, 'w') as fi:
             fi.write('{}'.format(result))
             
