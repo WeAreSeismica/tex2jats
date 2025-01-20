@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
+  "env": {
+    "UV_PYTHON": "$VENV_DIR/bin/python"
+  },
+  "packages": [
+    "python@3.13.1",
+    "pandoc@3.1.11.1",
+    "uv@0.5.18"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null",
+      ". $VENV_DIR/bin/activate",
+      "uv pip install beautifulsoup4 lxml numpy git+https://github.com/WeAreSeismica/biblib.git"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}

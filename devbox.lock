@@ -1,0 +1,158 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "pandoc@3.1.11.1": {
+      "last_modified": "2024-12-23T21:10:33Z",
+      "resolved": "github:NixOS/nixpkgs/de1864217bfa9b5845f465e771e0ecb48b30e02d#pandoc",
+      "source": "devbox-search",
+      "version": "3.1.11.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/p0rdvm4kh7vzjnd2anrlavv21djrz4n8-pandoc-cli-3.1.11.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/p0rdvm4kh7vzjnd2anrlavv21djrz4n8-pandoc-cli-3.1.11.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/yva1cg84s5mv4qijnghjaz0djyhn2mi0-pandoc-cli-3.1.11.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/yva1cg84s5mv4qijnghjaz0djyhn2mi0-pandoc-cli-3.1.11.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1g7228zislzzv5kzk7j26js1wj2f6y1p-pandoc-cli-3.1.11.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1g7228zislzzv5kzk7j26js1wj2f6y1p-pandoc-cli-3.1.11.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/haam466kpg80dc59blbxlbvm8wx3xyby-pandoc-cli-3.1.11.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/haam466kpg80dc59blbxlbvm8wx3xyby-pandoc-cli-3.1.11.1"
+        }
+      }
+    },
+    "python@3.13.1": {
+      "last_modified": "2024-12-23T21:10:33Z",
+      "plugin_version": "0.0.4",
+      "resolved": "github:NixOS/nixpkgs/de1864217bfa9b5845f465e771e0ecb48b30e02d#python313",
+      "source": "devbox-search",
+      "version": "3.13.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wn0n52lnysbscn702gfp20sx96cryiwp-python3-3.13.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wn0n52lnysbscn702gfp20sx96cryiwp-python3-3.13.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hskvsfyapfx5sqk5mhcylzbjpxkr51f6-python3-3.13.1",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/w3zkq34pfcwnwh235sqszxn3q0knq75s-python3-3.13.1-debug"
+            }
+          ],
+          "store_path": "/nix/store/hskvsfyapfx5sqk5mhcylzbjpxkr51f6-python3-3.13.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/aca752v0zczhjak334ldrgfi669nhccf-python3-3.13.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/aca752v0zczhjak334ldrgfi669nhccf-python3-3.13.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/acxvfb890g9jawlxsj7zs8marxxvzrrs-python3-3.13.1",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/wfsagf7s6lf1pclh3a0s5m4lrhh8g6hn-python3-3.13.1-debug"
+            }
+          ],
+          "store_path": "/nix/store/acxvfb890g9jawlxsj7zs8marxxvzrrs-python3-3.13.1"
+        }
+      }
+    },
+    "uv@0.5.18": {
+      "last_modified": "2025-01-14T01:21:38Z",
+      "resolved": "github:NixOS/nixpkgs/2b1fca3296ddd1602d2c4f104a4050e006f4b0cb#uv",
+      "source": "devbox-search",
+      "version": "0.5.18",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/rzwxis0yacabfy0krlx3z7j0bjyfv5gw-uv-0.5.18",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/rzwxis0yacabfy0krlx3z7j0bjyfv5gw-uv-0.5.18"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1ilvmmjzg9kp4hyg785np55hwg8x7z43-uv-0.5.18",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1ilvmmjzg9kp4hyg785np55hwg8x7z43-uv-0.5.18"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/yf1fpa9idcwpir2bj2bqws5i952z5vj3-uv-0.5.18",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/yf1fpa9idcwpir2bj2bqws5i952z5vj3-uv-0.5.18"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9wfdv1xycfvlry7xqw7ssphcqqan245y-uv-0.5.18",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9wfdv1xycfvlry7xqw7ssphcqqan245y-uv-0.5.18"
+        }
+      }
+    }
+  }
+}
