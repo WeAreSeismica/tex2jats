@@ -25,6 +25,8 @@ Before running the TeX2JATS converter, you need to:
 
 
 ## Workflow Option 1 - Using Docker
+**Note - There is a new option for setup that we are exploring using [devbox](https://www.jetify.com/devbox). This will replace Docker while still providing an isolated and consistent environment. If you would like to try this option, please reach out to @abhineetgupta on Slack.**
+
 1. Install [Docker](https://www.docker.com/) if you don't have it already.
 
 1. Start up Docker. Usually you will have an application called "Docker" on your computer with a rudimentary graphical user interface (GUI). You can also run this command in the command-line interface (CLI):
