@@ -1,5 +1,7 @@
 # TeX 2 JATS XML for Seismica
 
+**This repository has been archived as of April 2025.** The functionality has migrated to [another repository](https://github.com/WeAreSeismica/seismica-sce-v2) and future updates will be over there.
+
 ## Introduction
 There are two options to run the scripts. There's a docker-based setup that only requires installation of Docker and automatically manages all other dependencies. The other option is to install the dependencies and run the shell script that calls the python files to perform the conversions.
 
